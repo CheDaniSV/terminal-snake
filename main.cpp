@@ -7,19 +7,23 @@ bool isGameOver;
 bool debugMode;
 enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
 gameModes gamemode;
-const int width = 30;
-const int height = 15 - 2;
+const int playableWidth = 30;
+const int playableHeight = 15;
+const int width = playableWidth + 2;
+const int height = playableHeight - 2;
 int x, y, fruitX, fruitY, score;
-int tailX[(width-2)*height], tailY[(width-2)*height];
+int tailX[playableWidth*height], tailY[playableWidth*height];
 int tailL;
 int sleepTime;
 enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
 eDirection dir;
 
 void place_apple() {
-    fruitX = 1 + rand() % (width-1); // [1:width-1]
+    fruitX = 1 + rand() % playableWidth;
     fruitY = rand() % height;
     if (fruitX == x && fruitY == y)
+        place_apple();
+    if (fruitX < 1 || fruitX > playableWidth || fruitY < 0 || fruitX > playableHeight)
         place_apple();
     for (int i = 0; i < tailL; i++) {
         if (fruitX == tailX[i] && fruitY == tailY[i])
@@ -107,8 +111,8 @@ void draw() {
 
     cout << '\n';
     cout << "Score: " << score << endl;
-    if(debugMode) cout << "DEBUG: a:[" << fruitX << ',' << fruitY << "] O:[" << x << ',' << y << "] gm:"
-    << gamemode << " sleepTime:" << sleepTime << endl;
+    if (debugMode) cout << "DEBUG: a:(" << fruitX << ',' << fruitY << ") O:(" << x << ',' << y << ") sleepTime:" << sleepTime
+    << "\ngridSize:(" << playableWidth << 'x' << playableHeight << ") gm:" << gamemode << endl;
 }
 
 void input() {
@@ -179,7 +183,7 @@ void logic() {
                 isGameOver = true;
             break;
         case NOWALLS:
-            if (x >= width-1) x = 1; else if (x <= 0) x = width - 1;
+            if (x >= width - 1) x = 1; else if (x <= 0) x = width - 1;
             if (y >= height) y = 0; else if (y < 0) y = height - 1;
             break;
         case NOWALLS_INVINCIBLE:
@@ -199,7 +203,7 @@ void logic() {
         score++;
         tailL++;
         place_apple();
-        if (gamemode == CLASSIC_SPEEDUP && sleepTime > 50) sleepTime--;
+        if (gamemode == CLASSIC_SPEEDUP && sleepTime > 30) sleepTime -= 2;
     }
 }
 
@@ -207,9 +211,9 @@ void results() {
     system("cls");
     cout << "---Game Over!---" << '\n';
     cout << "Final score: " << score << '\n';
-    if (debugMode)
-        cout << "DEBUG: a:[" << fruitX << ',' << fruitY << "] O:[" << x << ',' << y << "] gm:"
-        << gamemode << " sleepTime:" << sleepTime << endl;
+    if (debugMode) cout << "DEBUG: a:(" << fruitX << ',' << fruitY << ") O:(" << x << ',' << y << ") sleepTime:" << sleepTime
+    << "\ngridSize:(" << playableWidth << 'x' << playableHeight << ") gm:" << gamemode << endl;
+    system("pause");
 }
 
 int main() {
