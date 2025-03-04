@@ -36,6 +36,7 @@ void setup() {
     cout << "0. classic \n1. classic_speedup \n2. nowalls \n3. nowalls_invincible \nSelect a game mode: ";
     int selectedGM;
     cin >> selectedGM;
+    system("cls");
     switch (selectedGM) {
     case 0:
         gamemode = CLASSIC;
@@ -69,7 +70,8 @@ void setup() {
 }
 
 void draw() {
-    system("cls"); // system("clear") for linux
+    // system("cls"); // system("clear") for linux
+    printf("\x1b[H");
     
     // top wall
     for (int i = 0; i < width; i++) { 
