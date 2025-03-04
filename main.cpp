@@ -3,29 +3,30 @@
 #include <windows.h>
 using namespace std;
 
-bool isGameOver;
-bool debugMode;
 enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
-gameModes gamemode;
-const int playableWidth = 30;
-const int playableHeight = 15;
+enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
+const int playableWidth = 40;
+const int playableHeight = 20;
 const int width = playableWidth + 2;
 const int height = playableHeight - 2;
-int x, y, fruitX, fruitY, score;
-int tailX[playableWidth*height], tailY[playableWidth*height];
-int tailL;
-int sleepTime;
-enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
-eDirection dir;
+int headX, headY, fruitX, fruitY;
+int tailX[width], tailY[height];
+int tailLength = 0, score = 0;
+int sleepTime = 70;
+bool isGameOver = false;
+bool forceQuit = false;
+bool isDebugMode = false;
+eDirection dir = STOP;
+gameModes gamemode;
 
 void place_apple() {
     fruitX = 1 + rand() % playableWidth;
     fruitY = rand() % height;
-    if (fruitX == x && fruitY == y)
+    if (fruitX == headX && fruitY == headY)
         place_apple();
     if (fruitX < 1 || fruitX > playableWidth || fruitY < 0 || fruitX > playableHeight)
         place_apple();
-    for (int i = 0; i < tailL; i++) {
+    for (int i = 0; i < tailLength; i++) {
         if (fruitX == tailX[i] && fruitY == tailY[i])
             place_apple();
             break;
@@ -33,66 +34,66 @@ void place_apple() {
 }
 
 void setup() {
-    cout << "0. classic \n1. classic_speedup \n2. nowalls \n3. nowalls_invincible \nSelect a game mode: ";
-    int selectedGM;
-    cin >> selectedGM;
-    system("cls");
-    switch (selectedGM) {
-    case 0:
+    int user_input;
+    cout << "1. classic \n" \
+         << "2. classic_speedup \n" \
+         << "3. nowalls \n" \
+         << "4. nowalls_invincible \n" \
+         << "~. exit \n" \
+         << "Select a game mode: ";
+    cin >> user_input;
+    switch (user_input) {
+    case 1:
         gamemode = CLASSIC;
         break;
-    case 1:
+    case 2:
         gamemode = CLASSIC_SPEEDUP;
         break;
-    case 2:
+    case 3:
         gamemode = NOWALLS;
         break;
-    case 3:
+    case 4:
         gamemode = NOWALLS_INVINCIBLE;
         break;
     default:
-        gamemode = CLASSIC;
+        forceQuit = true;
         break;
     }
 
-    debugMode = false;
-    isGameOver = false;
-    dir = STOP;
-    score = 0;
-    sleepTime = 70;
+    system("cls");
 
-    // initial head position
-    x = int(width/2);
-    y = int(height/2);
+    // Initial head position
+    headX = int(width/2);
+    headY = int(height/2);
 
-    // placing an apple
+    // Placing an apple
     place_apple();
 }
 
 void draw() {
     // system("cls"); // system("clear") for linux
-    printf("\x1b[H");
+    printf("\x1b[H"); // faster way to clear
     
-    // top wall
+    // Top wall
     for (int i = 0; i < width; i++) { 
         cout << '#';
     }
     cout << '\n';
     
-    // side walls and map
+    // Side walls and map
     for (int i = 0; i < height; i++) 
     {
         for (int j = 0; j < width; j++) 
         {
             if (j == 0 || j == width-1)
                 cout << '#';
-            else if (i == y && j == x)
+            else if (i == headY && j == headX)
                 cout << 'O';
             else if (i == fruitY && j == fruitX)
                 cout << 'a';
             else {
                 bool print = false;
-                for (int k = 0; k < tailL; k++) {
+                for (int k = 0; k < tailLength; k++) {
                     if (tailX[k] == j && tailY[k] == i) {
                         cout << 'o';
                         print = true;
@@ -106,30 +107,37 @@ void draw() {
         cout << '\n';
     }
 
-    // bottom wall
+    // Bottom wall
     for (int i = 0; i < width; i++) { 
         cout << '#';
     }
 
     cout << '\n';
     cout << "Score: " << score << endl;
-    if (debugMode) cout << "DEBUG: a:(" << fruitX << ',' << fruitY << ") O:(" << x << ',' << y << ") sleepTime:" << sleepTime
-    << "\ngridSize:(" << playableWidth << 'x' << playableHeight << ") gm:" << gamemode << endl;
+    if (isDebugMode)
+        cout << "DEBUG: \n" 
+             << "fruit: (" << fruitX << ',' << fruitY << ") head: (" << headX << ',' << headY << ")\n" \
+             << "sleepTime: " << sleepTime << " ms fps: " << 1000./sleepTime << "\n" \
+             << "gridSize: (" << width << 'x' << height << ") gm: " << gamemode << endl;
 }
 
 void input() {
     if (_kbhit())
     {
         switch (_getch()) {
+        case 75:
         case 'a':
             dir = LEFT;
             break;
+        case 77:
         case 'd':
             dir = RIGHT;
             break;
+        case 72:
         case 'w':
             dir = UP;
             break;
+        case 80:
         case 's':
             dir = DOWN;
             break;
@@ -137,21 +145,23 @@ void input() {
             isGameOver = true;
             break;
         case '`':
-            debugMode = !debugMode;
+            isDebugMode = !isDebugMode;
+            system("cls");
             break;
         }
     }
 }
 
 void logic() {
+    // Moving tail
     int prevX = tailX[0];
     int prevY = tailY[0];
-    int prev2X, prev2Y; // buffer
-    tailX[0] = x; // move the first part on the previous head's place
-    tailY[0] = y; 
+    int prev2X, prev2Y; // Buffer
+    tailX[0] = headX; // Move the first part on the previous head's place
+    tailY[0] = headY; 
 
-    // start with 1,ּ as 0 tail part is already moved
-    for (int i = 1; i < tailL; i++) {
+    // Start with 1,ּ as 0 tail part is already moved
+    for (int i = 1; i < tailLength; i++) {
         prev2X = tailX[i];
         prev2Y = tailY[i];
         tailX[i] = prevX;
@@ -160,66 +170,69 @@ void logic() {
         prevY = prev2Y;
     }
 
+    // Moving head
     switch (dir) {
         case LEFT:
-            x--;
+            headX--;
             break;
         case RIGHT:
-            x++;
+            headX++;
             break;
         case UP:
-            y--;
+            headY--;
             break;
         case DOWN:
-            y++;
+            headY++;
             break;
     }
 
+    // Check for collision with tail
     switch (gamemode) {
         case CLASSIC:
-            if (x <= 0 || x >= width || y < 0 || y > height)
-                isGameOver = true;
-            break;
         case CLASSIC_SPEEDUP:
-            if (x <= 0 || x >= width || y < 0 || y > height)
+            if (headX <= 0 || headX >= width || headY < 0 || headY > height)
                 isGameOver = true;
             break;
         case NOWALLS:
-            if (x >= width - 1) x = 1; else if (x <= 0) x = width - 1;
-            if (y >= height) y = 0; else if (y < 0) y = height - 1;
-            break;
         case NOWALLS_INVINCIBLE:
-            if (x >= width-1) x = 1; else if (x <= 0) x = width - 1;
-            if (y >= height) y = 0; else if (y < 0) y = height - 1;
+            if (headX >= width-1)
+                headX = 1;
+            else if (headX <= 0)
+                headX = width - 1;
+            if (headY >= height)
+                headY = 0;
+            else if (headY < 0)
+                headY = height - 1;
             break;
     }
 
-    // funny way to do that, but at least it uses less code
+    // Check for collision with tail
     if (gamemode != NOWALLS_INVINCIBLE) {
-        for (int i = 0; i < tailL; i++)
-            if (tailX[i] == x && tailY[i] == y)
+        for (int i = 0; i < tailLength; i++)
+            if (tailX[i] == headX && tailY[i] == headY)
                 isGameOver = true;
     }
 
-    if (x == fruitX && y == fruitY) {
+    // Eating a fruit
+    if (headX == fruitX && headY == fruitY) {
         score++;
-        tailL++;
+        tailLength++;
         place_apple();
+        // For speed-up gamemode: speeds up the game
         if (gamemode == CLASSIC_SPEEDUP && sleepTime > 30) sleepTime -= 2;
     }
 }
 
 void results() {
-    system("cls");
+    printf("\x1b[2J\x1b[H"); // "\x1b[2J" - clears the window, "\x1b[H" - carriage return
     cout << "---Game Over!---" << '\n';
     cout << "Final score: " << score << '\n';
-    if (debugMode) cout << "DEBUG: a:(" << fruitX << ',' << fruitY << ") O:(" << x << ',' << y << ") sleepTime:" << sleepTime
-    << "\ngridSize:(" << playableWidth << 'x' << playableHeight << ") gm:" << gamemode << endl;
-    system("pause");
 }
 
 int main() {
     setup();
+    if (forceQuit)
+        return 1;
     while (!isGameOver) {
         input();
         logic();
