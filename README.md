@@ -1,3 +1,4 @@
-# Snake game in the terminal, written on C++.
-## For practice
-### ~~~~>
+## Snake game in terminal 🐍
+- ANSI terminals only
+- Supports Windows & Linux
+- Has 4 gamemodes

@@ -1,6 +1,59 @@
 #include <iostream>
-#include <conio.h>
-#include <windows.h>
+
+#ifdef _WIN32
+    #include <conio.h>
+    #include <windows.h>
+    #define sleep_ms(ms) Sleep(ms)
+    #define systemClearScreen() system("cls")
+#elif defined(__linux__)
+    #include <unistd.h>
+    #include <termios.h>
+    #include <fcntl.h>
+    #define sleep_ms(ms) usleep((ms) * 1000)
+    #define systemClearScreen() system("clear")
+        // Function to check if a key has been pressed (like _kbhit())
+        int _kbhit() {
+            struct termios oldt, newt;
+            int ch;
+            int oldf;
+
+            tcgetattr(STDIN_FILENO, &oldt);
+            newt = oldt;
+            newt.c_lflag &= ~(ICANON | ECHO);
+            tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+            oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+            fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+            ch = getchar();
+
+            tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+            fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+            if (ch != EOF) {
+                ungetc(ch, stdin);
+                return 1;
+            }
+
+            return 0;
+        }
+
+        // Function to get a single character input (like _getch())
+        int _getch() {
+            struct termios oldt, newt;
+            int ch;
+
+            tcgetattr(STDIN_FILENO, &oldt);
+            newt = oldt;
+            newt.c_lflag &= ~(ICANON | ECHO);
+            tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+            ch = getchar();
+
+            tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+            return ch;
+        }
+#endif
+
 using namespace std;
 
 enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
@@ -47,6 +100,8 @@ void setup() {
          << "~. exit \n" \
          << "Select a game mode: ";
     cin >> user_input;
+    systemClearScreen();
+
     switch (user_input) {
     case 1:
         gamemode = CLASSIC;
@@ -78,7 +133,7 @@ void setup() {
     }
     emptyLine += "#\n";
 
-    cout <<"\x1b[H";
+    // Setting seed for random
     srand(time(0));
 
     // Initial head position
@@ -172,7 +227,7 @@ void input() {
             break;
         case '`':
             isDebugMode = !isDebugMode;
-            cout <<"\x1b[H";
+            systemClearScreen();
             break;
         }
     }
@@ -264,7 +319,7 @@ int main() {
         input();
         logic();
         draw();
-        Sleep(sleepTime);
+        sleep_ms(sleepTime);
     }
     results();
     return 0;
