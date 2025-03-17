@@ -18,15 +18,19 @@ bool forceQuit = false;
 bool isDebugMode = false;
 eDirection dir = STOP;
 gameModes gamemode;
-string xWall;
+string wallLine, emptyLine;
 
 void place_apple() {
     fruitX = 1 + rand() % playableWidth;
     fruitY = rand() % height;
-    if (fruitX == headX && fruitY == headY)
+    if (fruitX == headX && fruitY == headY) {
         place_apple();
-    if (fruitX < 1 || fruitX > playableWidth || fruitY < 0 || fruitX > playableHeight)
+        return;
+    }
+    if (fruitX < 1 || fruitX > playableWidth || fruitY < 0 || fruitX > playableHeight) {
         place_apple();
+        return;
+    }
     for (int i = 0; i < tailLength; i++) {
         if (fruitX == tailX[i] && fruitY == tailY[i])
             place_apple();
@@ -61,11 +65,18 @@ void setup() {
         break;
     }
 
-    // Preparing line of walls
+    // Prebaking line of wall
     for (int i = 0; i < width; i++) { 
-        xWall += '#';
+        wallLine += '#';
     }
-    xWall += '\n';
+    wallLine += '\n';
+
+    // Prebaking empty line
+    emptyLine = '#';
+    for (int i = 2; i < width; i++) { 
+        emptyLine += ' ';
+    }
+    emptyLine += "#\n";
 
     cout <<"\x1b[H";
     srand(time(0));
@@ -83,37 +94,50 @@ void draw() {
     cout <<"\x1b[H"; // faster way to clear
     
     // Top wall
-    cout << xWall;
+    cout << wallLine;
     
     // Side walls and map
-    for (int i = 0; i < height; i++) 
-    {
-        for (int j = 0; j < width; j++) 
-        {
-            if (j == 0 || j == width-1)
-                cout << '#';
-            else if (i == headY && j == headX)
-                cout << "\x1b[32mO\x1b[0m";
-            else if (i == fruitY && j == fruitX)
-                cout << "\x1b[31ma\x1b[0m";
-            else {
-                bool print = false;
-                for (int k = 0; k < tailLength; k++) {
-                    if (tailX[k] == j && tailY[k] == i) {
-                        cout << "\x1b[32mo\x1b[0m";
-                        print = true;
-                        break;
-                    }
+    bool isLineNotEmpty = false;
+    for (int i = 0; i < height; i++) {
+        if (fruitY != i && headY != i) {
+            for (int j = 0; j < tailLength; j++) {
+                if (tailY[j] == i) {
+                    isLineNotEmpty = true;
+                    break;
                 }
-                if (!print)
-                    cout << ' ';
             }
+        } else {
+            isLineNotEmpty = true;
         }
-        cout << '\n';
+        if (isLineNotEmpty) {
+            for (int j = 0; j < width; j++) {
+                if (j == 0 || j == width-1)
+                    cout << '#';
+                else if (i == headY && j == headX)
+                    cout << "\x1b[32mO\x1b[0m";
+                else if (i == fruitY && j == fruitX)
+                    cout << "\x1b[31ma\x1b[0m";
+                else {
+                    bool print = false;
+                    for (int k = 0; k < tailLength; k++) {
+                        if (tailX[k] == j && tailY[k] == i) {
+                            cout << "\x1b[32mo\x1b[0m";
+                            print = true;
+                            break;
+                        }
+                    }
+                    if (!print)
+                        cout << ' ';
+                }
+            }
+            cout << '\n';
+        } else {
+            cout << emptyLine;
+        }
     }
 
     // Bottom wall
-    cout << xWall;
+    cout << wallLine;
 
     cout << "Score: " << score << endl;
     if (isDebugMode)
