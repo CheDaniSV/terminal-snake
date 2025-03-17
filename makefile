@@ -1,5 +1,5 @@
 CC=g++
-BINARY=main
+BINARY=snake
 
 compile: $(BINARY)
 

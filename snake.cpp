@@ -145,7 +145,6 @@ void setup() {
 }
 
 void draw() {
-    // system("cls"); // system("clear") for linux
     cout <<"\x1b[H"; // faster way to clear
     
     // Top wall
