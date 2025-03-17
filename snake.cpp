@@ -73,6 +73,27 @@ eDirection dir = STOP;
 gameModes gamemode;
 string wallLine, emptyLine;
 
+int get_key() {
+    int ch = _getch();
+
+#ifdef __linux__
+    if (ch == 27) { // Escape sequence
+        if (_kbhit()) {
+            if (_getch() == '[') {
+                switch (_getch()) {
+                    case 'A': return 1000; // Up
+                    case 'B': return 1001; // Down
+                    case 'C': return 1002; // Right
+                    case 'D': return 1003; // Left
+                }
+            }
+        }
+    }
+#endif
+
+    return ch; // Return normal keypress
+}
+
 void place_apple() {
     fruitX = 1 + rand() % playableWidth;
     fruitY = rand() % height;
@@ -93,7 +114,8 @@ void place_apple() {
 
 void setup() {
     int user_input;
-    cout << "1. classic \n" \
+    cout << "\nMove with AWSD or arrows, x to quit \n" \
+         << "1. classic \n" \
          << "2. classic_speedup \n" \
          << "3. nowalls \n" \
          << "4. nowalls_invincible \n" \
@@ -204,7 +226,7 @@ void draw() {
 void input() {
     if (_kbhit())
     {
-        switch (_getch()) {
+        switch (get_key()) {
         case 75:
         case 'a':
             dir = LEFT;
