@@ -18,6 +18,7 @@ bool forceQuit = false;
 bool isDebugMode = false;
 eDirection dir = STOP;
 gameModes gamemode;
+string xWall;
 
 void place_apple() {
     fruitX = 1 + rand() % playableWidth;
@@ -60,7 +61,14 @@ void setup() {
         break;
     }
 
-    system("cls");
+    // Preparing line of walls
+    for (int i = 0; i < width; i++) { 
+        xWall += '#';
+    }
+    xWall += '\n';
+
+    cout <<"\x1b[H";
+    srand(time(0));
 
     // Initial head position
     headX = int(width/2);
@@ -72,13 +80,10 @@ void setup() {
 
 void draw() {
     // system("cls"); // system("clear") for linux
-    printf("\x1b[H"); // faster way to clear
+    cout <<"\x1b[H"; // faster way to clear
     
     // Top wall
-    for (int i = 0; i < width; i++) { 
-        cout << '#';
-    }
-    cout << '\n';
+    cout << xWall;
     
     // Side walls and map
     for (int i = 0; i < height; i++) 
@@ -88,14 +93,14 @@ void draw() {
             if (j == 0 || j == width-1)
                 cout << '#';
             else if (i == headY && j == headX)
-                cout << 'O';
+                cout << "\x1b[32mO\x1b[0m";
             else if (i == fruitY && j == fruitX)
-                cout << 'a';
+                cout << "\x1b[31ma\x1b[0m";
             else {
                 bool print = false;
                 for (int k = 0; k < tailLength; k++) {
                     if (tailX[k] == j && tailY[k] == i) {
-                        cout << 'o';
+                        cout << "\x1b[32mo\x1b[0m";
                         print = true;
                         break;
                     }
@@ -108,11 +113,8 @@ void draw() {
     }
 
     // Bottom wall
-    for (int i = 0; i < width; i++) { 
-        cout << '#';
-    }
+    cout << xWall;
 
-    cout << '\n';
     cout << "Score: " << score << endl;
     if (isDebugMode)
         cout << "DEBUG: \n" 
@@ -146,7 +148,7 @@ void input() {
             break;
         case '`':
             isDebugMode = !isDebugMode;
-            system("cls");
+            cout <<"\x1b[H";
             break;
         }
     }
@@ -186,16 +188,16 @@ void logic() {
             break;
     }
 
-    // Check for collision with tail
+    // Check for collision with walls
     switch (gamemode) {
         case CLASSIC:
         case CLASSIC_SPEEDUP:
-            if (headX <= 0 || headX >= width || headY < 0 || headY > height)
+            if (headX <= 0 || headX >= width - 1 || headY < 0 || headY >= height)
                 isGameOver = true;
             break;
         case NOWALLS:
         case NOWALLS_INVINCIBLE:
-            if (headX >= width-1)
+            if (headX >= width - 1)
                 headX = 1;
             else if (headX <= 0)
                 headX = width - 1;
@@ -218,14 +220,15 @@ void logic() {
         score++;
         tailLength++;
         place_apple();
-        // For speed-up gamemode: speeds up the game
-        if (gamemode == CLASSIC_SPEEDUP && sleepTime > 30) sleepTime -= 2;
+        // For speed-up gamemode - speeds up the game
+        if (gamemode == CLASSIC_SPEEDUP && sleepTime > 30)
+            sleepTime -= 2;
     }
 }
 
 void results() {
-    printf("\x1b[2J\x1b[H"); // "\x1b[2J" - clears the window, "\x1b[H" - carriage return
-    cout << "---Game Over!---" << '\n';
+    cout << "\x1b[2J\x1b[H";
+    cout << "\x1b[31m---Game Over!---\x1b[0m" << '\n';
     cout << "Final score: " << score << '\n';
 }
 
