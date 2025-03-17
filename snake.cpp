@@ -73,27 +73,6 @@ eDirection dir = STOP;
 gameModes gamemode;
 string wallLine, emptyLine;
 
-int get_key() {
-    int ch = _getch();
-
-#ifdef __linux__
-    if (ch == 27) { // Escape sequence
-        if (_kbhit()) {
-            if (_getch() == '[') {
-                switch (_getch()) {
-                    case 'A': return 1000; // Up
-                    case 'B': return 1001; // Down
-                    case 'C': return 1002; // Right
-                    case 'D': return 1003; // Left
-                }
-            }
-        }
-    }
-#endif
-
-    return ch; // Return normal keypress
-}
-
 void place_apple() {
     fruitX = 1 + rand() % playableWidth;
     fruitY = rand() % height;
@@ -226,7 +205,7 @@ void draw() {
 void input() {
     if (_kbhit())
     {
-        switch (get_key()) {
+        switch (_getch()) {
         case 75:
         case 'a':
             dir = LEFT;
