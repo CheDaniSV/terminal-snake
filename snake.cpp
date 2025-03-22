@@ -61,11 +61,11 @@ enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
 const int playableWidth = 40;
 const int playableHeight = 20;
 const int width = playableWidth + 2;
-const int height = playableHeight - 2;
+const int height = playableHeight + 2;
 int headX, headY, fruitX, fruitY;
 int tailX[width*height], tailY[width*height];
-int tailLength = 0, score = 0, minSpeedUpTime = 20, sleepTime = 70, speedUpDecrement = 2;
-bool isGameOver = false, forceQuit = false, isDebugMode = false;
+int tailLength = 0, score = 0, maxScore = playableWidth*playableHeight-1, minSpeedUpTime = 20, sleepTime = 70, speedUpDecrement = 2;
+bool isGameOver = false, isWin = false, isDebugMode = false;
 eDirection dir = STOP;
 gameModes gamemode;
 string wallLine, emptyLine;
@@ -114,7 +114,7 @@ void setup() {
         gamemode = NOWALLS_INVINCIBLE;
         break;
     default:
-        forceQuit = true;
+        isGameOver = true;
         break;
     }
 
@@ -200,9 +200,9 @@ void draw() {
     }
     if (isDebugMode)
         cout << "DEBUG: \n" 
-             << "fruit: (" << fruitX << ',' << fruitY << ") head: (" << headX << ',' << headY << ")\n" \
-             << "sleepTime: " << sleepTime << " ms fps: " << 1000./sleepTime << "\n" \
-             << "gridSize: (" << width << 'x' << height << ") gm: " << gamemode << '\n';
+             << "fruit: (" << fruitX << ',' << fruitY << ") head: (" << headX << ',' << headY << ") tailLength: " << tailLength << "     \n" \
+             << "sleepTime: " << sleepTime << " ms fps: " << 1000./sleepTime << "     \n" \
+             << "gridSize: (" << width << 'x' << height << ") gm: " << gamemode << "     \n";
 }
 
 void input() {
@@ -231,6 +231,14 @@ void input() {
         case '`':
             isDebugMode = !isDebugMode;
             systemClearScreen();
+            break;
+        case '+':
+            if (isDebugMode)
+                tailLength += 10;
+            break;
+        case '-':
+            if (isDebugMode)
+                tailLength += 10;
             break;
         }
     }
@@ -300,7 +308,12 @@ void logic() {
     // Eating a fruit
     if (headX == fruitX && headY == fruitY) {
         score++;
-        tailLength++;
+        if (tailLength != maxScore) {
+            tailLength++;
+        } else {
+            isGameOver = true;
+            isWin = true;
+        }
         place_apple();
         // For speed-up gamemode - speeds up the game
         if (gamemode == CLASSIC_SPEEDUP && sleepTime > minSpeedUpTime)
@@ -310,16 +323,24 @@ void logic() {
 
 void results() {
     cout << "\x1b[2J\x1b[H";
-    cout << "\x1b[31m---Game Over!---\x1b[0m" << '\n';
-    cout << "Final score: " << score << '\n';
+    if (isWin) {
+        cout << "\x1b[32m=====Congratulations! You've beat the game!=====\x1b[0m\n";
+        cout << "Final score: " << score << '\n';
+        cout << "Size of your map was: " << playableWidth << "x" << playableHeight << '\n';
+        cout << "And you've achived maximum possible length of the snake for this size: " << maxScore << '\n';
+        cout << "\x1b[32mThanks for playing \x1b[31m<3\x1b[0m";
+    } else {
+        cout << "\x1b[31m=====Game Over=====\x1b[0m\n";
+        cout << "Final score: " << score << '\n';
+    }
 }
 
 int main() {
     // TODO: pass args for grid size
-    // TODO: adding of length with debug
-    // TODO: fix getch on linux (If possible)
+    // TODO: fix place_apple()
     setup();
-    if (forceQuit)
+    system("stty -echo");
+    if (isGameOver)
         return 1;
     while (!isGameOver) {
         input();
@@ -327,6 +348,7 @@ int main() {
         draw();
         sleep_ms(sleepTime);
     }
+    system("stty echo");
     results();
     return 0;
 }
