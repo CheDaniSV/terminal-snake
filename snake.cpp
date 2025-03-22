@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <ctime>
 #ifdef _WIN32
     #include <conio.h>
     #include <windows.h>
@@ -63,12 +63,9 @@ const int playableHeight = 20;
 const int width = playableWidth + 2;
 const int height = playableHeight - 2;
 int headX, headY, fruitX, fruitY;
-int tailX[width], tailY[height];
-int tailLength = 0, score = 0;
-int sleepTime = 70;
-bool isGameOver = false;
-bool forceQuit = false;
-bool isDebugMode = false;
+int tailX[width*height], tailY[width*height];
+int tailLength = 0, score = 0, minSpeedUpTime = 20, sleepTime = 70, speedUpDecrement = 2;
+bool isGameOver = false, forceQuit = false, isDebugMode = false;
 eDirection dir = STOP;
 gameModes gamemode;
 string wallLine, emptyLine;
@@ -194,12 +191,18 @@ void draw() {
     // Bottom wall
     cout << wallLine;
 
-    cout << "Score: " << score << endl;
+    cout << "Score: " << score << '\n';
+    if (gamemode == CLASSIC_SPEEDUP) {
+        cout << "Speed: " << 1000./sleepTime;
+        if (sleepTime <= minSpeedUpTime)
+            cout << " MAX";
+        cout << '\n';
+    }
     if (isDebugMode)
         cout << "DEBUG: \n" 
              << "fruit: (" << fruitX << ',' << fruitY << ") head: (" << headX << ',' << headY << ")\n" \
              << "sleepTime: " << sleepTime << " ms fps: " << 1000./sleepTime << "\n" \
-             << "gridSize: (" << width << 'x' << height << ") gm: " << gamemode << endl;
+             << "gridSize: (" << width << 'x' << height << ") gm: " << gamemode << '\n';
 }
 
 void input() {
@@ -300,8 +303,8 @@ void logic() {
         tailLength++;
         place_apple();
         // For speed-up gamemode - speeds up the game
-        if (gamemode == CLASSIC_SPEEDUP && sleepTime > 30)
-            sleepTime -= 2;
+        if (gamemode == CLASSIC_SPEEDUP && sleepTime > minSpeedUpTime)
+            sleepTime -= speedUpDecrement;
     }
 }
 
@@ -312,6 +315,9 @@ void results() {
 }
 
 int main() {
+    // TODO: pass args for grid size
+    // TODO: adding of length with debug
+    // TODO: fix getch on linux (If possible)
     setup();
     if (forceQuit)
         return 1;
