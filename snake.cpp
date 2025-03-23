@@ -10,7 +10,7 @@
     #include <unistd.h>
     #include <termios.h>
     #include <fcntl.h>
-    #define sleep_ms(ms) usleep((ms) * 1000)
+    #define sleep_ms(ms) usleep((ms) * 1500) // 1500 should be 1000 (because usleep takes microseconds), but otherwise it's too fast on linux
     #define systemClearScreen() system("clear")
         // Function to check if a key has been pressed (like _kbhit())
         int _kbhit() {
@@ -74,8 +74,8 @@ string wallLine, emptyLine;
 // Random-number generator
 random_device rd;
 mt19937 gen(rd()); // mersenne twister with a long period of 219937 – 1
-uniform_int_distribution<> distribWidth(1, playableWidth-1);
-uniform_int_distribution<> distribHeight(1, playableHeight-1);
+uniform_int_distribution<> distribWidth(1, playableWidth);
+uniform_int_distribution<> distribHeight(1, playableHeight);
 
 void place_apple() {
     fruitX = distribWidth(gen);
@@ -85,15 +85,16 @@ void place_apple() {
         return;
     }
     for (int i = 0; i < tailLength; i++) {
-        if (fruitX == tailX[i] && fruitY == tailY[i])
+        if (fruitX == tailX[i] && fruitY == tailY[i]) {
             place_apple();
             return;
+        }
     }
 }
 
 void setup() {
     int user_input;
-    cout << "\nMove with AWSD or arrows, x to quit \n" \
+    cout << "Move with AWSD or arrows, x to quit \n" \
          << "1. classic \n" \
          << "2. classic_speedup \n" \
          << "3. nowalls \n" \
@@ -135,8 +136,8 @@ void setup() {
     emptyLine += "#\n";
 
     // Initial head position
-    headX = width/2-2;
-    headY = height/2-2;
+    headX = ceil(playableWidth/2)+1;
+    headY = ceil(playableHeight/2)+1;
 
     // Placing an apple
     place_apple();
@@ -144,13 +145,13 @@ void setup() {
 
 void draw() {
     cout <<"\x1b[H"; // faster way to clear
-    
+
     // Top wall
     cout << wallLine;
-    
+
     // Side walls and map
     bool isLineNotEmpty = false;
-    for (int i = 0; i < height; i++) {
+    for (int i = 1; i < height-1; i++) {
         if (fruitY != i && headY != i) {
             for (int j = 0; j < tailLength; j++) {
                 if (tailY[j] == i) {
@@ -234,11 +235,23 @@ void input() {
             break;
         case '+':
             if (isDebugMode)
-                tailLength++;
+                tailLength += 2;
             break;
         case '-':
             if (isDebugMode)
-                tailLength--;
+                tailLength -= 2;
+            break;
+        case '\'':
+            if (isDebugMode)
+                dir = STOP;
+            break;
+        case ']':
+            if (isDebugMode)
+                sleepTime += 10;
+            break;
+        case '[':
+            if (isDebugMode && sleepTime > 10)
+                sleepTime -= 10;
             break;
         }
     }
@@ -336,8 +349,6 @@ void results() {
 }
 
 int main() {
-    // TODO: pass args for grid size
-    // TODO: check width/playable width/ coordinates again pls
     setup();
     system("stty -echo"); // turns off echo, needed for linux
     if (isGameOver)
