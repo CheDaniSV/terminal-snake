@@ -1,5 +1,6 @@
 #include <iostream>
-#include <ctime>
+#include <random>
+
 #ifdef _WIN32
     #include <conio.h>
     #include <windows.h>
@@ -58,8 +59,8 @@ using namespace std;
 
 enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
 enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
-const int playableWidth = 40;
-const int playableHeight = 20;
+const int playableWidth = 39;
+const int playableHeight = 19;
 const int width = playableWidth + 2;
 const int height = playableHeight + 2;
 int headX, headY, fruitX, fruitY;
@@ -70,21 +71,23 @@ eDirection dir = STOP;
 gameModes gamemode;
 string wallLine, emptyLine;
 
+// Random-number generator
+random_device rd;
+mt19937 gen(rd()); // mersenne twister with a long period of 219937 – 1
+uniform_int_distribution<> distribWidth(1, playableWidth-1);
+uniform_int_distribution<> distribHeight(1, playableHeight-1);
+
 void place_apple() {
-    fruitX = 1 + rand() % playableWidth;
-    fruitY = rand() % height;
+    fruitX = distribWidth(gen);
+    fruitY = distribHeight(gen);
     if (fruitX == headX && fruitY == headY) {
-        place_apple();
-        return;
-    }
-    if (fruitX < 1 || fruitX > playableWidth || fruitY < 0 || fruitX > playableHeight) {
         place_apple();
         return;
     }
     for (int i = 0; i < tailLength; i++) {
         if (fruitX == tailX[i] && fruitY == tailY[i])
             place_apple();
-            break;
+            return;
     }
 }
 
@@ -131,12 +134,9 @@ void setup() {
     }
     emptyLine += "#\n";
 
-    // Setting seed for random
-    srand(time(0));
-
     // Initial head position
-    headX = int(width/2);
-    headY = int(height/2);
+    headX = width/2-2;
+    headY = height/2-2;
 
     // Placing an apple
     place_apple();
@@ -234,11 +234,11 @@ void input() {
             break;
         case '+':
             if (isDebugMode)
-                tailLength += 10;
+                tailLength++;
             break;
         case '-':
             if (isDebugMode)
-                tailLength += 10;
+                tailLength--;
             break;
         }
     }
@@ -337,9 +337,9 @@ void results() {
 
 int main() {
     // TODO: pass args for grid size
-    // TODO: fix place_apple()
+    // TODO: check width/playable width/ coordinates again pls
     setup();
-    system("stty -echo");
+    system("stty -echo"); // turns off echo, needed for linux
     if (isGameOver)
         return 1;
     while (!isGameOver) {
