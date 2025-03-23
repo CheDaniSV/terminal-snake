@@ -59,8 +59,8 @@ using namespace std;
 
 enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
 enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
-const int playableWidth = 39;
-const int playableHeight = 19;
+const int playableWidth = 33;
+const int playableHeight = 17;
 const int width = playableWidth + 2;
 const int height = playableHeight + 2;
 int headX, headY, fruitX, fruitY;
