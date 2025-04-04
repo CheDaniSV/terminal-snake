@@ -65,7 +65,7 @@ const int width = playableWidth + 2;
 const int height = playableHeight + 2;
 int headX, headY, fruitX, fruitY;
 int tailX[width*height], tailY[width*height];
-int tailLength = 0, score = 0, maxScore = playableWidth*playableHeight-1, minSpeedUpTime = 20, sleepTime = 70, speedUpDecrement = 2;
+int tailLength = 0, score = 0, maxScore = playableWidth*playableHeight-1, minSpeedUpTime = 10, sleepTime = 70, speedUpDecrement = 2;
 bool isGameOver = false, isWin = false, isDebugMode = false;
 eDirection dir = STOP;
 gameModes gamemode;
@@ -238,7 +238,7 @@ void input() {
                 tailLength += 2;
             break;
         case '-':
-            if (isDebugMode)
+            if (isDebugMode && (tailLength-2) >= 0)
                 tailLength -= 2;
             break;
         case '\'':
@@ -246,11 +246,11 @@ void input() {
                 dir = STOP;
             break;
         case ']':
-            if (isDebugMode)
+            if (isDebugMode && sleepTime < 150)
                 sleepTime += 10;
             break;
         case '[':
-            if (isDebugMode && sleepTime > 10)
+            if (isDebugMode && sleepTime > 0)
                 sleepTime -= 10;
             break;
         }
@@ -295,7 +295,7 @@ void logic() {
     switch (gamemode) {
         case CLASSIC:
         case CLASSIC_SPEEDUP:
-            if (headX <= 0 || headX >= width - 1 || headY < 0 || headY >= height)
+            if (headX <= 0 || headX >= width - 1 || headY <= 0 || headY >= height - 1)
                 isGameOver = true;
             break;
         case NOWALLS:
@@ -304,9 +304,10 @@ void logic() {
                 headX = 1;
             else if (headX <= 0)
                 headX = width - 1;
-            if (headY >= height)
-                headY = 0;
-            else if (headY < 0)
+
+            if (headY >= height - 1)
+                headY = 1;
+            else if (headY <= 0)
                 headY = height - 1;
             break;
     }
@@ -329,7 +330,7 @@ void logic() {
         }
         place_apple();
         // For speed-up gamemode - speeds up the game
-        if (gamemode == CLASSIC_SPEEDUP && sleepTime > minSpeedUpTime)
+        if (gamemode == CLASSIC_SPEEDUP && (sleepTime - speedUpDecrement) >= minSpeedUpTime)
             sleepTime -= speedUpDecrement;
     }
 }
