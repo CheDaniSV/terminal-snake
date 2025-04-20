@@ -7,4 +7,12 @@
 
 - ANSI terminals only
 - Supports Windows & Linux
-- Has 4 gamemodes
+- Has 4 gamemodes:
+	- CLASSIC - snake can't collide with the walls or itself 
+	- CLASSIC_SPEEDUP - higher the score faster the game
+	- NOWALLS - no collisions with the walls
+	- NOWALLS_INVINCIBLE - no collisions at all. You can't die
+
+### Building yourself
+Use make tool to build the game.
+It's simple: `make` builds executable, `make clean` deletes it

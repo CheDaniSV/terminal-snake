@@ -1,3 +1,13 @@
+/**
+ * @file snake.cpp
+ * @author CheDaniSV (chdaprim@gmail.com)
+ * @brief main file of terminal snake game
+ * @version v0.2.4
+ * @date 2025-04-20
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <iostream>
 #include <random>
 
