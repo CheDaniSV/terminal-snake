@@ -14,7 +14,7 @@ on:
 env:
     APP_NAME: snake
     SOURCE_FILE: snake
-    
+
 permissions:
     contents: write
 
@@ -22,7 +22,7 @@ jobs:
   create_tag:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'  # Only run for manual trigger
-    
+
     steps:
       - name: Check version format
         run: |
@@ -30,7 +30,7 @@ jobs:
             echo "Error: Version must be in the format vX.Y.Z (e.g., v1.2.3)"
             exit 1
           fi
-    
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -56,12 +56,14 @@ jobs:
           fetch-depth: 0  # Needed for commit history (fetches all commits)
 
       - name: Install dependencies
-        run: sudo apt-get install -y g++-mingw-w64-x86-64 
-    
+        run: sudo apt-get install -y g++-mingw-w64-x86-64 make
+
       - name: Build Binaries
         run: | 
-          g++ -static -o ${{ env.APP_NAME }} ${{ env.SOURCE_FILE }}.cpp
-          x86_64-w64-mingw32-g++ -static -o ${{ env.APP_NAME }}.exe ${{ env.SOURCE_FILE }}.cpp
+          make
+          make windows
+        # g++ -static -o ${{ env.APP_NAME }} ${{ env.SOURCE_FILE }}.cpp
+        # x86_64-w64-mingw32-g++ -static -o ${{ env.APP_NAME }}.exe ${{ env.SOURCE_FILE }}.cpp
 
       - name: Archive build artifacts
         run: |

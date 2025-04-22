@@ -14,5 +14,10 @@
 	- NOWALLS_INVINCIBLE - no collisions at all. You can't die
 
 ### Building yourself
-Use make tool to build the game.
-It's simple: `make` builds executable, `make clean` deletes it
+Use make tool to build the game yourself.
+- To install make run one of the following commands:
+	- `pacman -S make`
+	- `sudo apt install make`
+- To build: 
+	- run `make` to build executable for your platform
+	- run `make clean` to delete build file

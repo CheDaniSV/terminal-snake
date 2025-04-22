@@ -1,7 +1,9 @@
 # folders
 .vscode
 build/
-docs/
+
+# doxygen temp files
+docs/Doxyfile
 
 #vscode workspaces
 *.code-workspace
