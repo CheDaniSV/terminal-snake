@@ -23,7 +23,7 @@ class GameVariables {
         const int playableWidth = 33;
         const int playableHeight = 17;
         const int width = playableWidth + 2;
-        const int height = playableHeight + 2; // REVISIT THIS
+        const int height = playableHeight + 2;
         int headX, headY, fruitX, fruitY;
         int *tailX, *tailY;
         int tailLength = 0, score = 0, maxScore = playableWidth*playableHeight-1, minSpeedUpTime = 10, sleepTime = 70, speedUpDecrement = 2;
