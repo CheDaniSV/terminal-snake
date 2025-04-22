@@ -77,7 +77,7 @@ void GameRender::draw(GameVariables &vars) {
 }
 
 /**
- * @brief Outputs results of the game when game is over
+ * @brief Outputs results of the game when game has ended
  * 
  * @param vars 
  */
