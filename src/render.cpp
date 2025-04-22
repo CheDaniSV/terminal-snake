@@ -12,11 +12,6 @@
 
 using namespace std;
 
-/**
- * @brief Renders game field
- * 
- * @param vars 
- */
 void GameRender::draw(GameVariables &vars) {
     cout <<"\x1b[H"; // faster way to clear
     // Top wall
@@ -76,11 +71,6 @@ void GameRender::draw(GameVariables &vars) {
             << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
 }
 
-/**
- * @brief Outputs results of the game when game has ended
- * 
- * @param vars 
- */
 void GameRender::results(GameVariables &vars) {
     cout << "\x1b[2J\x1b[H";
     if (vars.isWin) {

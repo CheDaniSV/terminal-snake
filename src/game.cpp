@@ -12,10 +12,6 @@
 
 using namespace std;
 
-/**
- * @brief Constructor of Game, initializes start dialog and other preparations
- * 
- */
 Game::Game() {
     int user_input;
     cout << "AWSD to move, x to quit \n" \
@@ -62,10 +58,6 @@ Game::Game() {
     place_apple(vars);
 }
 
-/**
- * @brief "Ticker" - Starts main loop of the game
- * 
- */
 void Game::tick() {
     system("stty -echo"); // turns off echo, needed for linux
     if (vars.isGameOver)

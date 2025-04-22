@@ -104,21 +104,28 @@ $(function(){initNavTree('class_game_variables.html',''); initResizable(true); }
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_game_variables-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GameVariables Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_game_variables.html" title="GameVariables class, containts all variables for the game.">GameVariables</a> class, containts all variables for the game.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="variables_8h_source.html">variables.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a4674ea843f53ad8917b198a3297ea31c" id="r_a4674ea843f53ad8917b198a3297ea31c"><td class="memItemLeft" align="right" valign="top"><a id="a4674ea843f53ad8917b198a3297ea31c" name="a4674ea843f53ad8917b198a3297ea31c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>gameModes</b> { <b>CLASSIC</b>
+<tr class="memitem:a4674ea843f53ad8917b198a3297ea31c" id="r_a4674ea843f53ad8917b198a3297ea31c"><td class="memItemLeft" align="right" valign="top"><a id="a4674ea843f53ad8917b198a3297ea31c" name="a4674ea843f53ad8917b198a3297ea31c"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4674ea843f53ad8917b198a3297ea31c">gameModes</a> { <b>CLASSIC</b>
 , <b>CLASSIC_SPEEDUP</b>
 , <b>NOWALLS</b>
 , <b>NOWALLS_INVINCIBLE</b>
  }</td></tr>
+<tr class="memdesc:a4674ea843f53ad8917b198a3297ea31c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of gamemodes. <br /></td></tr>
 <tr class="separator:a4674ea843f53ad8917b198a3297ea31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada005f3ebefd4b1140c3b64732e7acf9" id="r_ada005f3ebefd4b1140c3b64732e7acf9"><td class="memItemLeft" align="right" valign="top"><a id="ada005f3ebefd4b1140c3b64732e7acf9" name="ada005f3ebefd4b1140c3b64732e7acf9"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>eDirection</b> { <br />
+<tr class="memitem:ada005f3ebefd4b1140c3b64732e7acf9" id="r_ada005f3ebefd4b1140c3b64732e7acf9"><td class="memItemLeft" align="right" valign="top"><a id="ada005f3ebefd4b1140c3b64732e7acf9" name="ada005f3ebefd4b1140c3b64732e7acf9"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada005f3ebefd4b1140c3b64732e7acf9">eDirection</a> { <br />
 &#160;&#160;<b>STOP</b>
 , <b>LEFT</b>
 , <b>RIGHT</b>
@@ -127,92 +134,481 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>DOWN</b>
 <br />
  }</td></tr>
+<tr class="memdesc:ada005f3ebefd4b1140c3b64732e7acf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of possible directions, motions states. <br /></td></tr>
 <tr class="separator:ada005f3ebefd4b1140c3b64732e7acf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a4f83c34aaf072441476ae6652cd8aa77" id="r_a4f83c34aaf072441476ae6652cd8aa77"><td class="memItemLeft" align="right" valign="top"><a id="a4f83c34aaf072441476ae6652cd8aa77" name="a4f83c34aaf072441476ae6652cd8aa77"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GameVariables</b> ()</td></tr>
+<tr class="memdesc:a4f83c34aaf072441476ae6652cd8aa77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="class_game_variables.html" title="GameVariables class, containts all variables for the game.">GameVariables</a> class, initilizes dynamic arrays and random number generators. <br /></td></tr>
+<tr class="separator:a4f83c34aaf072441476ae6652cd8aa77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:afa85c3113890de93b62c2409b19eb0a0" id="r_afa85c3113890de93b62c2409b19eb0a0"><td class="memItemLeft" align="right" valign="top"><a id="afa85c3113890de93b62c2409b19eb0a0" name="afa85c3113890de93b62c2409b19eb0a0"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>playableWidth</b> = 33</td></tr>
+<tr class="memitem:afa85c3113890de93b62c2409b19eb0a0" id="r_afa85c3113890de93b62c2409b19eb0a0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa85c3113890de93b62c2409b19eb0a0">playableWidth</a> = 33</td></tr>
 <tr class="separator:afa85c3113890de93b62c2409b19eb0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c7fc49ac9596a79890c3e92b9b9fd49" id="r_a9c7fc49ac9596a79890c3e92b9b9fd49"><td class="memItemLeft" align="right" valign="top"><a id="a9c7fc49ac9596a79890c3e92b9b9fd49" name="a9c7fc49ac9596a79890c3e92b9b9fd49"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>playableHeight</b> = 17</td></tr>
+<tr class="memitem:a9c7fc49ac9596a79890c3e92b9b9fd49" id="r_a9c7fc49ac9596a79890c3e92b9b9fd49"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7fc49ac9596a79890c3e92b9b9fd49">playableHeight</a> = 17</td></tr>
 <tr class="separator:a9c7fc49ac9596a79890c3e92b9b9fd49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abab077bbbd9b913669b9b3dda399580d" id="r_abab077bbbd9b913669b9b3dda399580d"><td class="memItemLeft" align="right" valign="top"><a id="abab077bbbd9b913669b9b3dda399580d" name="abab077bbbd9b913669b9b3dda399580d"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> = playableWidth + 2</td></tr>
+<tr class="memitem:abab077bbbd9b913669b9b3dda399580d" id="r_abab077bbbd9b913669b9b3dda399580d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abab077bbbd9b913669b9b3dda399580d">width</a> = <a class="el" href="#afa85c3113890de93b62c2409b19eb0a0">playableWidth</a> + 2</td></tr>
 <tr class="separator:abab077bbbd9b913669b9b3dda399580d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaa131909fa62aa736570c39c05134a2" id="r_afaa131909fa62aa736570c39c05134a2"><td class="memItemLeft" align="right" valign="top"><a id="afaa131909fa62aa736570c39c05134a2" name="afaa131909fa62aa736570c39c05134a2"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> = playableHeight + 2</td></tr>
+<tr class="memitem:afaa131909fa62aa736570c39c05134a2" id="r_afaa131909fa62aa736570c39c05134a2"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa131909fa62aa736570c39c05134a2">height</a> = <a class="el" href="#a9c7fc49ac9596a79890c3e92b9b9fd49">playableHeight</a> + 2</td></tr>
 <tr class="separator:afaa131909fa62aa736570c39c05134a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a718ca9ca3c9339be5316a67abde1ea5f" id="r_a718ca9ca3c9339be5316a67abde1ea5f"><td class="memItemLeft" align="right" valign="top"><a id="a718ca9ca3c9339be5316a67abde1ea5f" name="a718ca9ca3c9339be5316a67abde1ea5f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>headX</b></td></tr>
+<tr class="memitem:a718ca9ca3c9339be5316a67abde1ea5f" id="r_a718ca9ca3c9339be5316a67abde1ea5f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a718ca9ca3c9339be5316a67abde1ea5f">headX</a></td></tr>
 <tr class="separator:a718ca9ca3c9339be5316a67abde1ea5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a434164d35b942712433a0bfe00203eb0" id="r_a434164d35b942712433a0bfe00203eb0"><td class="memItemLeft" align="right" valign="top"><a id="a434164d35b942712433a0bfe00203eb0" name="a434164d35b942712433a0bfe00203eb0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>headY</b></td></tr>
+<tr class="memitem:a434164d35b942712433a0bfe00203eb0" id="r_a434164d35b942712433a0bfe00203eb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a434164d35b942712433a0bfe00203eb0">headY</a></td></tr>
 <tr class="separator:a434164d35b942712433a0bfe00203eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72edac6c07c73f667fa6fefc4d38e25c" id="r_a72edac6c07c73f667fa6fefc4d38e25c"><td class="memItemLeft" align="right" valign="top"><a id="a72edac6c07c73f667fa6fefc4d38e25c" name="a72edac6c07c73f667fa6fefc4d38e25c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fruitX</b></td></tr>
+<tr class="memitem:a72edac6c07c73f667fa6fefc4d38e25c" id="r_a72edac6c07c73f667fa6fefc4d38e25c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72edac6c07c73f667fa6fefc4d38e25c">fruitX</a></td></tr>
 <tr class="separator:a72edac6c07c73f667fa6fefc4d38e25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e9aa4de37452ece5e1173fe5fa566f2" id="r_a8e9aa4de37452ece5e1173fe5fa566f2"><td class="memItemLeft" align="right" valign="top"><a id="a8e9aa4de37452ece5e1173fe5fa566f2" name="a8e9aa4de37452ece5e1173fe5fa566f2"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>fruitY</b></td></tr>
+<tr class="memitem:a8e9aa4de37452ece5e1173fe5fa566f2" id="r_a8e9aa4de37452ece5e1173fe5fa566f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e9aa4de37452ece5e1173fe5fa566f2">fruitY</a></td></tr>
 <tr class="separator:a8e9aa4de37452ece5e1173fe5fa566f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b0d2c37bbf7af43ea2d66a1138d0e82" id="r_a5b0d2c37bbf7af43ea2d66a1138d0e82"><td class="memItemLeft" align="right" valign="top"><a id="a5b0d2c37bbf7af43ea2d66a1138d0e82" name="a5b0d2c37bbf7af43ea2d66a1138d0e82"></a>
-int *&#160;</td><td class="memItemRight" valign="bottom"><b>tailX</b></td></tr>
+<tr class="memitem:a5b0d2c37bbf7af43ea2d66a1138d0e82" id="r_a5b0d2c37bbf7af43ea2d66a1138d0e82"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b0d2c37bbf7af43ea2d66a1138d0e82">tailX</a></td></tr>
 <tr class="separator:a5b0d2c37bbf7af43ea2d66a1138d0e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51955a8cf881d74f6d78795b69fc5a37" id="r_a51955a8cf881d74f6d78795b69fc5a37"><td class="memItemLeft" align="right" valign="top"><a id="a51955a8cf881d74f6d78795b69fc5a37" name="a51955a8cf881d74f6d78795b69fc5a37"></a>
-int *&#160;</td><td class="memItemRight" valign="bottom"><b>tailY</b></td></tr>
-<tr class="separator:a51955a8cf881d74f6d78795b69fc5a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a561f270f5a513b21997e022918e701f4" id="r_a561f270f5a513b21997e022918e701f4"><td class="memItemLeft" align="right" valign="top"><a id="a561f270f5a513b21997e022918e701f4" name="a561f270f5a513b21997e022918e701f4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>tailLength</b> = 0</td></tr>
+<tr class="memitem:aef7ea0f9bc0de1b2ba34802fccc4aae0" id="r_aef7ea0f9bc0de1b2ba34802fccc4aae0"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef7ea0f9bc0de1b2ba34802fccc4aae0">tailY</a></td></tr>
+<tr class="separator:aef7ea0f9bc0de1b2ba34802fccc4aae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a561f270f5a513b21997e022918e701f4" id="r_a561f270f5a513b21997e022918e701f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a561f270f5a513b21997e022918e701f4">tailLength</a> = 0</td></tr>
 <tr class="separator:a561f270f5a513b21997e022918e701f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d143351a08d1a803aaa6b9f25db54a5" id="r_a4d143351a08d1a803aaa6b9f25db54a5"><td class="memItemLeft" align="right" valign="top"><a id="a4d143351a08d1a803aaa6b9f25db54a5" name="a4d143351a08d1a803aaa6b9f25db54a5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>score</b> = 0</td></tr>
+<tr class="memitem:a4d143351a08d1a803aaa6b9f25db54a5" id="r_a4d143351a08d1a803aaa6b9f25db54a5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d143351a08d1a803aaa6b9f25db54a5">score</a> = 0</td></tr>
 <tr class="separator:a4d143351a08d1a803aaa6b9f25db54a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad49a269ab2d18f71c3d31f352ef3c94e" id="r_ad49a269ab2d18f71c3d31f352ef3c94e"><td class="memItemLeft" align="right" valign="top"><a id="ad49a269ab2d18f71c3d31f352ef3c94e" name="ad49a269ab2d18f71c3d31f352ef3c94e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>maxScore</b> = playableWidth*playableHeight-1</td></tr>
+<tr class="memitem:ad49a269ab2d18f71c3d31f352ef3c94e" id="r_ad49a269ab2d18f71c3d31f352ef3c94e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad49a269ab2d18f71c3d31f352ef3c94e">maxScore</a> = <a class="el" href="#afa85c3113890de93b62c2409b19eb0a0">playableWidth</a>*<a class="el" href="#a9c7fc49ac9596a79890c3e92b9b9fd49">playableHeight</a>-1</td></tr>
 <tr class="separator:ad49a269ab2d18f71c3d31f352ef3c94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41c70292fe6f426ce9793a074305e81d" id="r_a41c70292fe6f426ce9793a074305e81d"><td class="memItemLeft" align="right" valign="top"><a id="a41c70292fe6f426ce9793a074305e81d" name="a41c70292fe6f426ce9793a074305e81d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>minSpeedUpTime</b> = 10</td></tr>
+<tr class="memitem:a41c70292fe6f426ce9793a074305e81d" id="r_a41c70292fe6f426ce9793a074305e81d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41c70292fe6f426ce9793a074305e81d">minSpeedUpTime</a> = 10</td></tr>
 <tr class="separator:a41c70292fe6f426ce9793a074305e81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addc12845a905267cf376bef348105226" id="r_addc12845a905267cf376bef348105226"><td class="memItemLeft" align="right" valign="top"><a id="addc12845a905267cf376bef348105226" name="addc12845a905267cf376bef348105226"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>sleepTime</b> = 70</td></tr>
+<tr class="memitem:addc12845a905267cf376bef348105226" id="r_addc12845a905267cf376bef348105226"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addc12845a905267cf376bef348105226">sleepTime</a> = 70</td></tr>
 <tr class="separator:addc12845a905267cf376bef348105226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbc7c307f0290eff333e11cc227722b6" id="r_adbc7c307f0290eff333e11cc227722b6"><td class="memItemLeft" align="right" valign="top"><a id="adbc7c307f0290eff333e11cc227722b6" name="adbc7c307f0290eff333e11cc227722b6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>speedUpDecrement</b> = 2</td></tr>
+<tr class="memitem:adbc7c307f0290eff333e11cc227722b6" id="r_adbc7c307f0290eff333e11cc227722b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbc7c307f0290eff333e11cc227722b6">speedUpDecrement</a> = 2</td></tr>
 <tr class="separator:adbc7c307f0290eff333e11cc227722b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed7242e9e811299a3ac9ad3dad6fb730" id="r_aed7242e9e811299a3ac9ad3dad6fb730"><td class="memItemLeft" align="right" valign="top"><a id="aed7242e9e811299a3ac9ad3dad6fb730" name="aed7242e9e811299a3ac9ad3dad6fb730"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isGameOver</b> = false</td></tr>
+<tr class="memitem:aed7242e9e811299a3ac9ad3dad6fb730" id="r_aed7242e9e811299a3ac9ad3dad6fb730"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed7242e9e811299a3ac9ad3dad6fb730">isGameOver</a> = false</td></tr>
 <tr class="separator:aed7242e9e811299a3ac9ad3dad6fb730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a536dbbd46d62969c31f947f16bd56669" id="r_a536dbbd46d62969c31f947f16bd56669"><td class="memItemLeft" align="right" valign="top"><a id="a536dbbd46d62969c31f947f16bd56669" name="a536dbbd46d62969c31f947f16bd56669"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isWin</b> = false</td></tr>
+<tr class="memitem:a536dbbd46d62969c31f947f16bd56669" id="r_a536dbbd46d62969c31f947f16bd56669"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a536dbbd46d62969c31f947f16bd56669">isWin</a> = false</td></tr>
 <tr class="separator:a536dbbd46d62969c31f947f16bd56669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adebd47e7d4b318d8591c35f5f4d94c5a" id="r_adebd47e7d4b318d8591c35f5f4d94c5a"><td class="memItemLeft" align="right" valign="top"><a id="adebd47e7d4b318d8591c35f5f4d94c5a" name="adebd47e7d4b318d8591c35f5f4d94c5a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDebugMode</b> = false</td></tr>
+<tr class="memitem:adebd47e7d4b318d8591c35f5f4d94c5a" id="r_adebd47e7d4b318d8591c35f5f4d94c5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adebd47e7d4b318d8591c35f5f4d94c5a">isDebugMode</a> = false</td></tr>
 <tr class="separator:adebd47e7d4b318d8591c35f5f4d94c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc30cf3c5f84f6b371e9734b02b9c72b" id="r_afc30cf3c5f84f6b371e9734b02b9c72b"><td class="memItemLeft" align="right" valign="top"><a id="afc30cf3c5f84f6b371e9734b02b9c72b" name="afc30cf3c5f84f6b371e9734b02b9c72b"></a>
-eDirection&#160;</td><td class="memItemRight" valign="bottom"><b>dir</b> = STOP</td></tr>
+<tr class="memitem:afc30cf3c5f84f6b371e9734b02b9c72b" id="r_afc30cf3c5f84f6b371e9734b02b9c72b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ada005f3ebefd4b1140c3b64732e7acf9">eDirection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc30cf3c5f84f6b371e9734b02b9c72b">dir</a> = STOP</td></tr>
 <tr class="separator:afc30cf3c5f84f6b371e9734b02b9c72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaeb509a344bdaab61a7b6b22a87d5454" id="r_aaeb509a344bdaab61a7b6b22a87d5454"><td class="memItemLeft" align="right" valign="top"><a id="aaeb509a344bdaab61a7b6b22a87d5454" name="aaeb509a344bdaab61a7b6b22a87d5454"></a>
-gameModes&#160;</td><td class="memItemRight" valign="bottom"><b>gamemode</b></td></tr>
+<tr class="memitem:aaeb509a344bdaab61a7b6b22a87d5454" id="r_aaeb509a344bdaab61a7b6b22a87d5454"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a4674ea843f53ad8917b198a3297ea31c">gameModes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaeb509a344bdaab61a7b6b22a87d5454">gamemode</a></td></tr>
 <tr class="separator:aaeb509a344bdaab61a7b6b22a87d5454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ca9d569ac6ae000a30dc2fda0aefe90" id="r_a6ca9d569ac6ae000a30dc2fda0aefe90"><td class="memItemLeft" align="right" valign="top"><a id="a6ca9d569ac6ae000a30dc2fda0aefe90" name="a6ca9d569ac6ae000a30dc2fda0aefe90"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>wallLine</b></td></tr>
+<tr class="memitem:a6ca9d569ac6ae000a30dc2fda0aefe90" id="r_a6ca9d569ac6ae000a30dc2fda0aefe90"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ca9d569ac6ae000a30dc2fda0aefe90">wallLine</a></td></tr>
 <tr class="separator:a6ca9d569ac6ae000a30dc2fda0aefe90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a771527c84043e37679eae84a3d1770bb" id="r_a771527c84043e37679eae84a3d1770bb"><td class="memItemLeft" align="right" valign="top"><a id="a771527c84043e37679eae84a3d1770bb" name="a771527c84043e37679eae84a3d1770bb"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>emptyLine</b></td></tr>
+<tr class="memitem:a771527c84043e37679eae84a3d1770bb" id="r_a771527c84043e37679eae84a3d1770bb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a771527c84043e37679eae84a3d1770bb">emptyLine</a></td></tr>
 <tr class="separator:a771527c84043e37679eae84a3d1770bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e6fb69fcb3b487f529fb1a3aafbc815" id="r_a5e6fb69fcb3b487f529fb1a3aafbc815"><td class="memItemLeft" align="right" valign="top"><a id="a5e6fb69fcb3b487f529fb1a3aafbc815" name="a5e6fb69fcb3b487f529fb1a3aafbc815"></a>
-random_device&#160;</td><td class="memItemRight" valign="bottom"><b>rd</b></td></tr>
+<tr class="memitem:a5e6fb69fcb3b487f529fb1a3aafbc815" id="r_a5e6fb69fcb3b487f529fb1a3aafbc815"><td class="memItemLeft" align="right" valign="top">random_device&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e6fb69fcb3b487f529fb1a3aafbc815">rd</a></td></tr>
 <tr class="separator:a5e6fb69fcb3b487f529fb1a3aafbc815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82682984fd33343575e73ad9bbda3cff" id="r_a82682984fd33343575e73ad9bbda3cff"><td class="memItemLeft" align="right" valign="top"><a id="a82682984fd33343575e73ad9bbda3cff" name="a82682984fd33343575e73ad9bbda3cff"></a>
-mt19937&#160;</td><td class="memItemRight" valign="bottom"><b>gen</b></td></tr>
+<tr class="memitem:a82682984fd33343575e73ad9bbda3cff" id="r_a82682984fd33343575e73ad9bbda3cff"><td class="memItemLeft" align="right" valign="top">mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82682984fd33343575e73ad9bbda3cff">gen</a></td></tr>
 <tr class="separator:a82682984fd33343575e73ad9bbda3cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cfdb1151ec881a5f0368e6dfa034f62" id="r_a5cfdb1151ec881a5f0368e6dfa034f62"><td class="memItemLeft" align="right" valign="top"><a id="a5cfdb1151ec881a5f0368e6dfa034f62" name="a5cfdb1151ec881a5f0368e6dfa034f62"></a>
-uniform_int_distribution&#160;</td><td class="memItemRight" valign="bottom"><b>distribWidth</b></td></tr>
+<tr class="memitem:a5cfdb1151ec881a5f0368e6dfa034f62" id="r_a5cfdb1151ec881a5f0368e6dfa034f62"><td class="memItemLeft" align="right" valign="top">uniform_int_distribution&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cfdb1151ec881a5f0368e6dfa034f62">distribWidth</a></td></tr>
 <tr class="separator:a5cfdb1151ec881a5f0368e6dfa034f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d38c3d2e25c21fadd1ff40cd272d045" id="r_a6d38c3d2e25c21fadd1ff40cd272d045"><td class="memItemLeft" align="right" valign="top"><a id="a6d38c3d2e25c21fadd1ff40cd272d045" name="a6d38c3d2e25c21fadd1ff40cd272d045"></a>
-uniform_int_distribution&#160;</td><td class="memItemRight" valign="bottom"><b>distribHeight</b></td></tr>
+<tr class="memitem:a6d38c3d2e25c21fadd1ff40cd272d045" id="r_a6d38c3d2e25c21fadd1ff40cd272d045"><td class="memItemLeft" align="right" valign="top">uniform_int_distribution&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d38c3d2e25c21fadd1ff40cd272d045">distribHeight</a></td></tr>
 <tr class="separator:a6d38c3d2e25c21fadd1ff40cd272d045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_game_variables.html" title="GameVariables class, containts all variables for the game.">GameVariables</a> class, containts all variables for the game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="afc30cf3c5f84f6b371e9734b02b9c72b" name="afc30cf3c5f84f6b371e9734b02b9c72b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc30cf3c5f84f6b371e9734b02b9c72b">&#9670;&#160;</a></span>dir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ada005f3ebefd4b1140c3b64732e7acf9">eDirection</a> GameVariables::dir = STOP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>instance of directions enum </p>
+
+</div>
+</div>
+<a id="a6d38c3d2e25c21fadd1ff40cd272d045" name="a6d38c3d2e25c21fadd1ff40cd272d045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d38c3d2e25c21fadd1ff40cd272d045">&#9670;&#160;</a></span>distribHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uniform_int_distribution GameVariables::distribHeight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>declaration of distribution for height </p>
+
+</div>
+</div>
+<a id="a5cfdb1151ec881a5f0368e6dfa034f62" name="a5cfdb1151ec881a5f0368e6dfa034f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cfdb1151ec881a5f0368e6dfa034f62">&#9670;&#160;</a></span>distribWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uniform_int_distribution GameVariables::distribWidth</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>declaration of distribution for width </p>
+
+</div>
+</div>
+<a id="a771527c84043e37679eae84a3d1770bb" name="a771527c84043e37679eae84a3d1770bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771527c84043e37679eae84a3d1770bb">&#9670;&#160;</a></span>emptyLine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameVariables::emptyLine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>empty line (when there's no apple or snake) </p>
+
+</div>
+</div>
+<a id="a72edac6c07c73f667fa6fefc4d38e25c" name="a72edac6c07c73f667fa6fefc4d38e25c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72edac6c07c73f667fa6fefc4d38e25c">&#9670;&#160;</a></span>fruitX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::fruitX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>x cord of the apple </p>
+
+</div>
+</div>
+<a id="a8e9aa4de37452ece5e1173fe5fa566f2" name="a8e9aa4de37452ece5e1173fe5fa566f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e9aa4de37452ece5e1173fe5fa566f2">&#9670;&#160;</a></span>fruitY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::fruitY</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>y cord of the apple </p>
+
+</div>
+</div>
+<a id="aaeb509a344bdaab61a7b6b22a87d5454" name="aaeb509a344bdaab61a7b6b22a87d5454"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeb509a344bdaab61a7b6b22a87d5454">&#9670;&#160;</a></span>gamemode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a4674ea843f53ad8917b198a3297ea31c">gameModes</a> GameVariables::gamemode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>instance of gamemodes enum </p>
+
+</div>
+</div>
+<a id="a82682984fd33343575e73ad9bbda3cff" name="a82682984fd33343575e73ad9bbda3cff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82682984fd33343575e73ad9bbda3cff">&#9670;&#160;</a></span>gen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mt19937 GameVariables::gen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>mersenne twister with a long period of 219937 – 1 </p>
+
+</div>
+</div>
+<a id="a718ca9ca3c9339be5316a67abde1ea5f" name="a718ca9ca3c9339be5316a67abde1ea5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718ca9ca3c9339be5316a67abde1ea5f">&#9670;&#160;</a></span>headX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::headX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>x cord of snake's head </p>
+
+</div>
+</div>
+<a id="a434164d35b942712433a0bfe00203eb0" name="a434164d35b942712433a0bfe00203eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434164d35b942712433a0bfe00203eb0">&#9670;&#160;</a></span>headY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::headY</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>y cord of snake's head </p>
+
+</div>
+</div>
+<a id="afaa131909fa62aa736570c39c05134a2" name="afaa131909fa62aa736570c39c05134a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa131909fa62aa736570c39c05134a2">&#9670;&#160;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int GameVariables::height = <a class="el" href="#a9c7fc49ac9596a79890c3e92b9b9fd49">playableHeight</a> + 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>height including walls </p>
+
+</div>
+</div>
+<a id="adebd47e7d4b318d8591c35f5f4d94c5a" name="adebd47e7d4b318d8591c35f5f4d94c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adebd47e7d4b318d8591c35f5f4d94c5a">&#9670;&#160;</a></span>isDebugMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameVariables::isDebugMode = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>top-secret debug mode </p>
+
+</div>
+</div>
+<a id="aed7242e9e811299a3ac9ad3dad6fb730" name="aed7242e9e811299a3ac9ad3dad6fb730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7242e9e811299a3ac9ad3dad6fb730">&#9670;&#160;</a></span>isGameOver</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameVariables::isGameOver = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>is game over yet? </p>
+
+</div>
+</div>
+<a id="a536dbbd46d62969c31f947f16bd56669" name="a536dbbd46d62969c31f947f16bd56669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a536dbbd46d62969c31f947f16bd56669">&#9670;&#160;</a></span>isWin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameVariables::isWin = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>have you won? </p>
+
+</div>
+</div>
+<a id="ad49a269ab2d18f71c3d31f352ef3c94e" name="ad49a269ab2d18f71c3d31f352ef3c94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49a269ab2d18f71c3d31f352ef3c94e">&#9670;&#160;</a></span>maxScore</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::maxScore = <a class="el" href="#afa85c3113890de93b62c2409b19eb0a0">playableWidth</a>*<a class="el" href="#a9c7fc49ac9596a79890c3e92b9b9fd49">playableHeight</a>-1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>max score for this size of the field </p>
+
+</div>
+</div>
+<a id="a41c70292fe6f426ce9793a074305e81d" name="a41c70292fe6f426ce9793a074305e81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c70292fe6f426ce9793a074305e81d">&#9670;&#160;</a></span>minSpeedUpTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::minSpeedUpTime = 10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>min speed when playing speed-up mode </p>
+
+</div>
+</div>
+<a id="a9c7fc49ac9596a79890c3e92b9b9fd49" name="a9c7fc49ac9596a79890c3e92b9b9fd49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c7fc49ac9596a79890c3e92b9b9fd49">&#9670;&#160;</a></span>playableHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int GameVariables::playableHeight = 17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>height of playable field (excluding walls) </p>
+
+</div>
+</div>
+<a id="afa85c3113890de93b62c2409b19eb0a0" name="afa85c3113890de93b62c2409b19eb0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa85c3113890de93b62c2409b19eb0a0">&#9670;&#160;</a></span>playableWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int GameVariables::playableWidth = 33</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>width of playable field (excluding walls) </p>
+
+</div>
+</div>
+<a id="a5e6fb69fcb3b487f529fb1a3aafbc815" name="a5e6fb69fcb3b487f529fb1a3aafbc815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e6fb69fcb3b487f529fb1a3aafbc815">&#9670;&#160;</a></span>rd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">random_device GameVariables::rd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>random_device to generate numbers </p>
+
+</div>
+</div>
+<a id="a4d143351a08d1a803aaa6b9f25db54a5" name="a4d143351a08d1a803aaa6b9f25db54a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d143351a08d1a803aaa6b9f25db54a5">&#9670;&#160;</a></span>score</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::score = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>game score (total number of apples eaten) </p>
+
+</div>
+</div>
+<a id="addc12845a905267cf376bef348105226" name="addc12845a905267cf376bef348105226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc12845a905267cf376bef348105226">&#9670;&#160;</a></span>sleepTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::sleepTime = 70</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>default speed (time of sleep in cycle) </p>
+
+</div>
+</div>
+<a id="adbc7c307f0290eff333e11cc227722b6" name="adbc7c307f0290eff333e11cc227722b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbc7c307f0290eff333e11cc227722b6">&#9670;&#160;</a></span>speedUpDecrement</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::speedUpDecrement = 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>by how much speed is increased in speed-up gamemodes </p>
+
+</div>
+</div>
+<a id="a561f270f5a513b21997e022918e701f4" name="a561f270f5a513b21997e022918e701f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a561f270f5a513b21997e022918e701f4">&#9670;&#160;</a></span>tailLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameVariables::tailLength = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>length of snake's tail </p>
+
+</div>
+</div>
+<a id="a5b0d2c37bbf7af43ea2d66a1138d0e82" name="a5b0d2c37bbf7af43ea2d66a1138d0e82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0d2c37bbf7af43ea2d66a1138d0e82">&#9670;&#160;</a></span>tailX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* GameVariables::tailX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>array of X cords of the snake's tail </p>
+
+</div>
+</div>
+<a id="aef7ea0f9bc0de1b2ba34802fccc4aae0" name="aef7ea0f9bc0de1b2ba34802fccc4aae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef7ea0f9bc0de1b2ba34802fccc4aae0">&#9670;&#160;</a></span>tailY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* GameVariables::tailY</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>array of Y cords of the snake's tail </p>
+
+</div>
+</div>
+<a id="a6ca9d569ac6ae000a30dc2fda0aefe90" name="a6ca9d569ac6ae000a30dc2fda0aefe90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ca9d569ac6ae000a30dc2fda0aefe90">&#9670;&#160;</a></span>wallLine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string GameVariables::wallLine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>wall line (line full of #) </p>
+
+</div>
+</div>
+<a id="abab077bbbd9b913669b9b3dda399580d" name="abab077bbbd9b913669b9b3dda399580d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab077bbbd9b913669b9b3dda399580d">&#9670;&#160;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int GameVariables::width = <a class="el" href="#afa85c3113890de93b62c2409b19eb0a0">playableWidth</a> + 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>width including walls </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Code/CppGuides/terminal_snake_cpp_edition/include/<a class="el" href="variables_8h_source.html">variables.h</a></li>
 </ul>

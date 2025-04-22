@@ -12,11 +12,6 @@
 
 using namespace std;
 
-/**
- * @brief Places new apple randomly on the field
- * 
- * @param vars 
- */
 void GameLogic::place_apple(GameVariables &vars) {
     vars.fruitX = vars.distribWidth(vars.gen);
     vars.fruitY = vars.distribHeight(vars.gen);
@@ -32,11 +27,6 @@ void GameLogic::place_apple(GameVariables &vars) {
     }
 }
 
-/**
- * @brief Handels user's input
- * 
- * @param vars 
- */
 void GameLogic::input(GameVariables &vars) {
     if (_kbhit())
     {
@@ -88,11 +78,6 @@ void GameLogic::input(GameVariables &vars) {
     }
 }
 
-/**
- * @brief Moves snake, handles collisions, eating a fruit and etc
- * 
- * @param vars 
- */
 void GameLogic::logic(GameVariables &vars) {
     // Moving tail
     int prevX = vars.tailX[0];

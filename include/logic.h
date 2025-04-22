@@ -86,10 +86,31 @@
 
 #include "variables.h"
 
+/**
+ * @brief Declaration of GameLogic class
+ * 
+ */
 class GameLogic {
     public:
+        /**
+         * @brief Places new apple randomly on the field
+         * 
+         * @param vars 
+         */
         void place_apple(GameVariables &vars);
+
+        /**
+         * @brief Handels user's input
+         * 
+         * @param vars 
+         */
         void input(GameVariables &vars);
+
+        /**
+         * @brief Moves snake, handles collisions, eating a fruit and etc
+         * 
+         * @param vars 
+         */
         void logic(GameVariables &vars);
 };
 

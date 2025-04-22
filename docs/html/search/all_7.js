@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['render_2ecpp_0',['render.cpp',['../render_8cpp.html',1,'']]],
-  ['results_1',['results',['../class_game_render.html#a60281e5004e76494c73c170bc9af1f5c',1,'GameRender']]]
+  ['logic_0',['logic',['../class_game_logic.html#a5095007028732e3650efe781c39842dc',1,'GameLogic']]],
+  ['logic_2ecpp_1',['logic.cpp',['../logic_8cpp.html',1,'']]]
 ];

@@ -114,22 +114,25 @@ $(function(){initNavTree('game_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;render.h&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;logic.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="variables_8h.html">variables.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_game.html">   19</a></span><span class="keyword">class </span><a class="code hl_function" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>: <span class="keyword">public</span> <a class="code hl_class" href="class_game_render.html">GameRender</a>, <span class="keyword">public</span> <a class="code hl_class" href="class_game_logic.html">GameLogic</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="class_game_variables.html">GameVariables</a> vars;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_function" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">tick</a>();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_game.html">   23</a></span><span class="keyword">class </span><a class="code hl_function" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>: <span class="keyword">public</span> <a class="code hl_class" href="class_game_render.html">GameRender</a>, <span class="keyword">public</span> <a class="code hl_class" href="class_game_logic.html">GameLogic</a> {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_game.html#adb646a1759086d78996316b6c9ad1821">   25</a></span>        <a class="code hl_class" href="class_game_variables.html">GameVariables</a> <a class="code hl_variable" href="class_game.html#adb646a1759086d78996316b6c9ad1821">vars</a>; </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game</a>();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">tick</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_game_html_ad59df6562a58a614fda24622d3715b65"><div class="ttname"><a href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game::Game</a></div><div class="ttdeci">Game()</div><div class="ttdoc">Constructor of Game, initializes start dialog and other preparations.</div><div class="ttdef"><b>Definition</b> game.cpp:19</div></div>
-<div class="ttc" id="aclass_game_html_adf1634a2d0c22f30f7c57e72fd2831bc"><div class="ttname"><a href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">Game::tick</a></div><div class="ttdeci">void tick()</div><div class="ttdoc">&quot;Ticker&quot; - Starts main loop of the game</div><div class="ttdef"><b>Definition</b> game.cpp:69</div></div>
-<div class="ttc" id="aclass_game_logic_html"><div class="ttname"><a href="class_game_logic.html">GameLogic</a></div><div class="ttdef"><b>Definition</b> logic.h:89</div></div>
-<div class="ttc" id="aclass_game_render_html"><div class="ttname"><a href="class_game_render.html">GameRender</a></div><div class="ttdef"><b>Definition</b> render.h:16</div></div>
-<div class="ttc" id="aclass_game_variables_html"><div class="ttname"><a href="class_game_variables.html">GameVariables</a></div><div class="ttdef"><b>Definition</b> variables.h:19</div></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_game_html_ad59df6562a58a614fda24622d3715b65"><div class="ttname"><a href="class_game.html#ad59df6562a58a614fda24622d3715b65">Game::Game</a></div><div class="ttdeci">Game()</div><div class="ttdoc">Constructor of Game, initializes start dialog and other preparations.</div><div class="ttdef"><b>Definition</b> game.cpp:15</div></div>
+<div class="ttc" id="aclass_game_html_adb646a1759086d78996316b6c9ad1821"><div class="ttname"><a href="class_game.html#adb646a1759086d78996316b6c9ad1821">Game::vars</a></div><div class="ttdeci">GameVariables vars</div><div class="ttdef"><b>Definition</b> game.h:25</div></div>
+<div class="ttc" id="aclass_game_html_adf1634a2d0c22f30f7c57e72fd2831bc"><div class="ttname"><a href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">Game::tick</a></div><div class="ttdeci">void tick()</div><div class="ttdoc">&quot;Ticker&quot; - Starts main loop of the game</div><div class="ttdef"><b>Definition</b> game.cpp:61</div></div>
+<div class="ttc" id="aclass_game_logic_html"><div class="ttname"><a href="class_game_logic.html">GameLogic</a></div><div class="ttdoc">Declaration of GameLogic class.</div><div class="ttdef"><b>Definition</b> logic.h:93</div></div>
+<div class="ttc" id="aclass_game_render_html"><div class="ttname"><a href="class_game_render.html">GameRender</a></div><div class="ttdoc">Declaration of GameRender class.</div><div class="ttdef"><b>Definition</b> render.h:20</div></div>
+<div class="ttc" id="aclass_game_variables_html"><div class="ttname"><a href="class_game_variables.html">GameVariables</a></div><div class="ttdoc">GameVariables class, containts all variables for the game.</div><div class="ttdef"><b>Definition</b> variables.h:23</div></div>
 <div class="ttc" id="avariables_8h_html"><div class="ttname"><a href="variables_8h.html">variables.h</a></div><div class="ttdoc">Header which implements GameVariables class, with varibles used by game objects.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
