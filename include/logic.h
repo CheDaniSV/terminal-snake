@@ -73,7 +73,7 @@
 
         // Function to pause console (analog of system(pause) on Windows)
         inline void pauseConsole() {
-            std::cout << "Press any key to continue...";
+            std::cout << "Press any key to continue...\n";
             termios oldt, newt;
             tcgetattr(STDIN_FILENO, &oldt);         // get current terminal settings
             newt = oldt;

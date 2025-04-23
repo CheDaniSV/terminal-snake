@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">terminal-snake<span id="projectnumber">&#160;v0.2.4</span>
+   <div id="projectname">terminal-snake<span id="projectnumber">&#160;v0.2.5</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -172,7 +172,7 @@ $(function(){initNavTree('logic_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// Function to pause console (analog of system(pause) on Windows)</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> pauseConsole() {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Press any key to continue...&quot;</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Press any key to continue...\n&quot;</span>;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            termios oldt, newt;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            tcgetattr(STDIN_FILENO, &amp;oldt);         <span class="comment">// get current terminal settings</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            newt = oldt;</div>
