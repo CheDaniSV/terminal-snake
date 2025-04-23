@@ -29,12 +29,15 @@ jobs:
 
       - name: Check version format
         run: |
-          if [[ ! "${{ github.event.inputs.version }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          input_version = "${{ github.event.inputs.version }}"
+          latest_tag=$(git describe --tags --abbrev=0)
+
+          if [[ ! "$input_version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Error: Version must be in the format vX.Y.Z (e.g., v1.2.3)"
             exit 1
-          elif [[ "${{ github.event.inputs.version }}" == "v0.0.0" ]]; then
-            if [[ ! "$(git describe --tags --abbrev=0 2>/dev/null || echo "none")" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo "Error: Can't build latest version. Latest git tag is not in the correct format vX.Y.Z (e.g., v1.2.3)"
+          elif [[ "$input_version" == "v0.0.0" ]]; then
+            if [[ ! "$latest_tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "Error: Can't build latest version. Latest git tag ($latest_tag) is not in the correct format vX.Y.Z (e.g., v1.2.3)"
               exit 1
             fi
           fi
