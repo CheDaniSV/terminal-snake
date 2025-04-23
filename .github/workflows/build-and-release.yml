@@ -13,7 +13,7 @@ on:
 
 env:
     APP_NAME: snake
-    SOURCE_FILE: snake
+    SOURCE_FILE: snake # deprecated
 
 permissions:
     contents: write
@@ -24,15 +24,20 @@ jobs:
     if: github.event_name == 'workflow_dispatch'  # Only run for manual trigger
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Check version format
         run: |
           if [[ ! "${{ github.event.inputs.version }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Error: Version must be in the format vX.Y.Z (e.g., v1.2.3)"
             exit 1
+          elif [[ "${{ github.event.inputs.version }}" == "v0.0.0" ]]; then
+            if [[ ! "$(git describe --tags --abbrev=0 2>/dev/null || echo "none")" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "Error: Can't build latest version. Latest git tag is not in the correct format vX.Y.Z (e.g., v1.2.3)"
+              exit 1
+            fi
           fi
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Set up Git user
         run: |
@@ -41,8 +46,10 @@ jobs:
 
       - name: Create and push tag
         run: |
-          git tag ${{ github.event.inputs.version }}
-          git push origin ${{ github.event.inputs.version }}
+          if [[ ! "${{ github.event.inputs.version }}" =~ ^v0\.0\.0$ ]]; then
+            git tag ${{ github.event.inputs.version }}
+            git push origin ${{ github.event.inputs.version }}
+          fi
 
   build:
     runs-on: ubuntu-latest
