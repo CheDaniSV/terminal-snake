@@ -25,11 +25,12 @@
     #include <unistd.h>
     #include <termios.h>
     #include <fcntl.h>
+    #include <iostream>
     #define sleep_ms(ms) usleep((ms) * 1500) // 1500 should be 1000 (because usleep takes microseconds), but otherwise it's too fast on linux
     #define clearConsole() system("clear")
 
         // Function to check if a key has been pressed (like _kbhit())
-        int _kbhit() {
+        inline int _kbhit() {
             struct termios oldt, newt;
             int ch;
             int oldf;
@@ -55,7 +56,7 @@
         }
 
         // Function to get a single character input (like _getch())
-        int _getch() {
+        inline int _getch() {
             struct termios oldt, newt;
             int ch;
 
@@ -71,7 +72,7 @@
         }
 
         // Function to pause console (analog of system(pause) on Windows)
-        void pauseConsole() {
+        inline void pauseConsole() {
             std::cout << "Press any key to continue...";
             termios oldt, newt;
             tcgetattr(STDIN_FILENO, &oldt);         // get current terminal settings
