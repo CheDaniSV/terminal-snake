@@ -66,7 +66,7 @@ void GameRender::draw(GameVariables &vars) {
     }
     if (vars.isDebugMode)
         cout << "DEBUG: \n" 
-            << "fruit: (" << vars.fruitX << ',' << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") vars.tailLength: " << vars.tailLength << "     \n" \
+            << "fruit: (" << vars.fruitX << ',' << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
             << "sleepTime: " << vars.sleepTime << " ms fps: " << 1000./vars.sleepTime << "     \n" \
             << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
 }

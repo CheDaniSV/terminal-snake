@@ -3,7 +3,7 @@ name: Build & Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Auto-trigger when a tag is pushed
+      - 'v*.*.*'  # Auto-trigger when a tag is pushed (it uses fnmatch patterns, not regex)
   workflow_dispatch:
     inputs:
       version:
@@ -13,7 +13,6 @@ on:
 
 env:
     APP_NAME: snake
-    SOURCE_FILE: snake # deprecated
 
 permissions:
     contents: write
@@ -21,7 +20,7 @@ permissions:
 jobs:
   create_tag:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'  # Only run for manual trigger
+    if: github.event_name == 'workflow_dispatch' # Only run for manual trigger
 
     steps:
       - name: Checkout repository
@@ -65,7 +64,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Needed for commit history (fetches all commits)
+          fetch-depth: 0 # Needed for commit history (fetches all commits)
 
       - name: Install dependencies
         run: sudo apt-get install -y g++-mingw-w64-x86-64 make
@@ -74,8 +73,6 @@ jobs:
         run: | 
           make
           make windows
-        # g++ -static -o ${{ env.APP_NAME }} ${{ env.SOURCE_FILE }}.cpp
-        # x86_64-w64-mingw32-g++ -static -o ${{ env.APP_NAME }}.exe ${{ env.SOURCE_FILE }}.cpp
 
       - name: Archive build artifacts
         run: |
