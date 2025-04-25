@@ -12,10 +12,10 @@ on:
         default: 'v0.0.0'
 
 env:
-    APP_NAME: snake
+  APP_NAME: snake
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
   create_tag:
