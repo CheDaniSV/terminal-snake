@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">terminal-snake<span id="projectnumber">&#160;v0.2.5</span>
+   <div id="projectname">terminal-snake<span id="projectnumber">&#160;v0.2.8</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,7 +106,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__c_1_2_code_2_cpp_guides_2terminal__snake__cpp__edition_2_r_e_a_d_m_e"></a></p>
-<p><img src="https://github.com/CheDaniSV/terminal-snake/actions/workflows/build-and-release.yml/badge.svg" alt="Build and release workflow status" style="pointer-events: none;" class="inline"/> <img src="https://github.com/CheDaniSV/terminal-snake/actions/workflows/docker-deploy.yml/badge.svg" alt="Docker deploy workflow status" style="pointer-events: none;" class="inline"/> <img src="https://img.shields.io/github/commits-since/CheDaniSV/terminal-snake/latest" alt="Commits since last release" class="inline"/> <img src="https://img.shields.io/github/last-commit/CheDaniSV/terminal-snake" alt="GitHub last commit" class="inline"/> </p>
+<p><img src="https://img.shields.io/github/commits-since/CheDaniSV/terminal-snake/latest" alt="Commits since last release" class="inline"/> <img src="https://img.shields.io/github/last-commit/CheDaniSV/terminal-snake" alt="GitHub last commit" class="inline"/> </p>
 <ul>
 <li>ANSI terminals only</li>
 <li>Supports Windows &amp; Linux</li>
@@ -128,10 +128,16 @@ Building yourself</h2>
 </li>
 <li>To build:<ul>
 <li>run <code>make</code> to build executable for your platform</li>
-<li>run <code>make clean</code> to delete build file </li>
+<li>run <code>make clean</code> to delete build file</li>
 </ul>
 </li>
 </ul>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Running with Docker (why not 👾):</h2>
+<ol type="1">
+<li>Pull the docker image: <code>docker pull chedanisv/ubuntu-snake:&lt;version&gt;</code></li>
+<li>Run the docker container: <code>docker run --rm -it chedanisv/ubuntu-snake:&lt;version&gt;</code> </li>
+</ol>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

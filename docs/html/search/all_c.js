@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['taillength_0',['tailLength',['../class_game_variables.html#a561f270f5a513b21997e022918e701f4',1,'GameVariables']]],
-  ['tailx_1',['tailX',['../class_game_variables.html#a5b0d2c37bbf7af43ea2d66a1138d0e82',1,'GameVariables']]],
-  ['taily_2',['tailY',['../class_game_variables.html#aef7ea0f9bc0de1b2ba34802fccc4aae0',1,'GameVariables']]],
-  ['terminal_3',['🐍 Snake game in terminal',['../index.html',1,'']]],
-  ['tick_4',['tick',['../class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc',1,'Game']]]
+  ['rd_0',['rd',['../class_game_variables.html#a5e6fb69fcb3b487f529fb1a3aafbc815',1,'GameVariables']]],
+  ['render_2ecpp_1',['render.cpp',['../render_8cpp.html',1,'']]],
+  ['results_2',['results',['../class_game_render.html#a60281e5004e76494c73c170bc9af1f5c',1,'GameRender']]],
+  ['running_20with_20docker_20why_20not_20👾_20_3a_3',['Running with Docker (why not 👾):',['../index.html#autotoc_md2',1,'']]]
 ];
