@@ -23,6 +23,6 @@ Use make tool to build the game yourself.
 	- run `make` to build executable for your platform
 	- run `make clean` to delete build file
 
-### Running with Docker (why not 👾):
+### Running with Docker (why not 👾)
 1. Pull the docker image: `docker pull chedanisv/ubuntu-snake:<version>`
 2. Run the docker container: `docker run --rm -it chedanisv/ubuntu-snake:<version>`
