@@ -32,4 +32,6 @@ jobs:
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }} .
 
       - name: Push Docker image
-        run: docker push ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }}
+        run: |
+          docker docker push ${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }}
