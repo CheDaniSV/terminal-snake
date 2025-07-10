@@ -34,4 +34,4 @@ jobs:
       - name: Add tags & push Docker image
         run: |
           docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }} ${{ env.IMAGE_NAME }}:latest
-          docker push -a ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }}
+          docker push -a ${{ env.IMAGE_NAME }}
