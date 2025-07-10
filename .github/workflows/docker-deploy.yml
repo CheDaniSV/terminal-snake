@@ -31,7 +31,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }} .
 
-      - name: Push Docker image
+      - name: Add tags & push Docker image
         run: |
-          docker push ${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }}
+          docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }} ${{ env.IMAGE_NAME }}:latest
+          docker push -a ${{ env.IMAGE_NAME }}:${{ github.event.inputs.version || github.ref_name }}
