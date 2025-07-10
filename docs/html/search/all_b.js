@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['place_5fapple_0',['place_apple',['../class_game_logic.html#a17a00c5605917e3c26f3b67a22611b41',1,'GameLogic']]],
-  ['playableheight_1',['playableHeight',['../class_game_variables.html#a9c7fc49ac9596a79890c3e92b9b9fd49',1,'GameVariables']]],
-  ['playablewidth_2',['playableWidth',['../class_game_variables.html#afa85c3113890de93b62c2409b19eb0a0',1,'GameVariables']]]
+  ['score_0',['score',['../class_game_variables.html#a4d143351a08d1a803aaa6b9f25db54a5',1,'GameVariables']]],
+  ['sleeptime_1',['sleepTime',['../class_game_variables.html#addc12845a905267cf376bef348105226',1,'GameVariables']]],
+  ['snake_20game_20in_20terminal_2',['🐍 Snake game in terminal',['../index.html',1,'']]],
+  ['speedupdecrement_3',['speedUpDecrement',['../class_game_variables.html#adbc7c307f0290eff333e11cc227722b6',1,'GameVariables']]]
 ];

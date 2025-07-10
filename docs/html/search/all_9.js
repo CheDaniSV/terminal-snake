@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['maxscore_2',['maxScore',['../class_game_variables.html#ad49a269ab2d18f71c3d31f352ef3c94e',1,'GameVariables']]],
-  ['minspeeduptime_3',['minSpeedUpTime',['../class_game_variables.html#a41c70292fe6f426ce9793a074305e81d',1,'GameVariables']]]
+  ['place_5fapple_0',['place_apple',['../class_game_logic.html#a17a00c5605917e3c26f3b67a22611b41',1,'GameLogic']]],
+  ['playableheight_1',['playableHeight',['../class_game_variables.html#a9c7fc49ac9596a79890c3e92b9b9fd49',1,'GameVariables']]],
+  ['playablewidth_2',['playableWidth',['../class_game_variables.html#afa85c3113890de93b62c2409b19eb0a0',1,'GameVariables']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['edirection_0',['eDirection',['../class_game_variables.html#ada005f3ebefd4b1140c3b64732e7acf9',1,'GameVariables']]],
-  ['emptyline_1',['emptyLine',['../class_game_variables.html#a771527c84043e37679eae84a3d1770bb',1,'GameVariables']]]
+  ['fruitx_0',['fruitX',['../class_game_variables.html#a72edac6c07c73f667fa6fefc4d38e25c',1,'GameVariables']]],
+  ['fruity_1',['fruitY',['../class_game_variables.html#a8e9aa4de37452ece5e1173fe5fa566f2',1,'GameVariables']]]
 ];

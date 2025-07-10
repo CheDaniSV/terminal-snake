@@ -18,6 +18,10 @@ $(BINARY): $(OBJECTS)
 # This target is used specifically for building Windows x86_64 Binaries on Linux with x86_64-w64-mingw32-g++
 windows:
 	x86_64-w64-mingw32-g++ $(CPPFILES) -I $(INCLUDE_FOLDER) -static -O2 -o $(BINARY).exe
+	
+# Build for linux using wsl (you need wsl with all dependencies for that ofc)
+linux:
+	wsl -d Debian -- make
 
 clean:
 	rm $(BINARY) $(BINARY).exe 

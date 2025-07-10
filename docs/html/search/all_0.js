@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_3a_0',['Running with Docker (why not 👾):',['../index.html#autotoc_md2',1,'']]]
+  ['building_20yourself_0',['Building yourself',['../index.html#autotoc_md1',1,'']]]
 ];
