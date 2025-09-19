@@ -6,7 +6,7 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/CheDaniSV/terminal-snake">
 </p>
 
-- ANSI terminals only
+- ANSI terminals **only**
 - Supports Windows & Linux
 - Has 4 gamemodes:
 	- CLASSIC - snake can't collide with the walls or itself 
@@ -21,7 +21,6 @@ Use make tool to build the game yourself.
 	- `sudo apt install make`
 - To build: 
 	- run `make` to build executable for your platform
-	- run `make clean` to delete build file
+	- run `make clean` to delete build files
 
-Running with Docker (1.5G version 🤣): `docker run --rm -it chedanisv/ubuntu-snake`
-Running Docker 16M version: `docker run --rm -it chedanisv/terminal-snake`
+Running in Docker: `docker run --rm -it chedanisv/terminal-snake`

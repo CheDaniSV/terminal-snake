@@ -12,6 +12,7 @@
 #define GAME_RENDER
 
 #include "variables.h"
+#include <sstream>
 
 /**
  * @brief Declaration of GameRender class
@@ -24,7 +25,7 @@ class GameRender {
         * 
         * @param vars 
         */
-        void draw(GameVariables &vars);
+        void draw(GameVariables &var);
 
         /**
          * @brief Outputs results of the game when game has ended

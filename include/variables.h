@@ -29,7 +29,7 @@ class GameVariables {
         enum gameModes {CLASSIC, CLASSIC_SPEEDUP, NOWALLS, NOWALLS_INVINCIBLE};
 
         /**
-         * @brief Enum of possible directions, motions states
+         * @brief Enum of possible directions, motion states
          * 
          */
         enum eDirection {STOP, LEFT, RIGHT, UP, DOWN};
@@ -48,7 +48,7 @@ class GameVariables {
         int score = 0; /*!< game score (total number of apples eaten) */
         int maxScore = playableWidth*playableHeight-1; /*!< max score for this size of the field */
         int minSpeedUpTime = 10; /*!< min speed when playing speed-up mode */
-        int sleepTime = 70; /*!< default speed (time of sleep in cycle) */
+        int sleepTime = 60; /*!< default speed (time of sleep in cycle) */
         int speedUpDecrement = 2; /*!< by how much speed is increased in speed-up gamemodes */
         bool isGameOver = false; /*!< is game over yet? */
         bool isWin = false; /*!< have you won? */

@@ -28,52 +28,51 @@ void GameLogic::place_apple(GameVariables &vars) {
 }
 
 void GameLogic::input(GameVariables &vars) {
-    if (_kbhit())
-    {
+    if (_kbhit()) {
         switch (_getch()) {
-        case 75:
-        case 'a':
-            vars.dir = vars.LEFT;
-            break;
-        case 77:
-        case 'd':
-            vars.dir = vars.RIGHT;
-            break;
-        case 72:
-        case 'w':
-            vars.dir = vars.UP;
-            break;
-        case 80:
-        case 's':
-            vars.dir = vars.DOWN;
-            break;
-        case 'x':
-            vars.isGameOver = true;
-            break;
-        case '`':
-            vars.isDebugMode = !vars.isDebugMode;
-            clearConsole();
-            break;
-        case '+':
-            if (vars.isDebugMode)
-                vars.tailLength += 2;
-            break;
-        case '-':
-            if (vars.isDebugMode && (vars.tailLength-2) >= 0)
-                vars.tailLength -= 2;
-            break;
-        case '\'':
-            if (vars.isDebugMode)
-                vars.dir = vars.STOP;
-            break;
-        case ']':
-            if (vars.isDebugMode && vars.sleepTime < 150)
-                vars.sleepTime += 10;
-            break;
-        case '[':
-            if (vars.isDebugMode && vars.sleepTime > 0)
-                vars.sleepTime -= 10;
-            break;
+            case 75:
+            case 'a':
+                vars.dir = vars.LEFT;
+                break;
+            case 77:
+            case 'd':
+                vars.dir = vars.RIGHT;
+                break;
+            case 72:
+            case 'w':
+                vars.dir = vars.UP;
+                break;
+            case 80:
+            case 's':
+                vars.dir = vars.DOWN;
+                break;
+            case 'x':
+                vars.isGameOver = true;
+                break;
+            case '`':
+                vars.isDebugMode = !vars.isDebugMode;
+                clearConsole();
+                break;
+            case '+':
+                if (vars.isDebugMode)
+                    vars.tailLength += 2;
+                break;
+            case '-':
+                if (vars.isDebugMode && (vars.tailLength-2) >= 0)
+                    vars.tailLength -= 2;
+                break;
+            case '\'':
+                if (vars.isDebugMode)
+                    vars.dir = vars.STOP;
+                break;
+            case ']':
+                if (vars.isDebugMode && vars.sleepTime < 150)
+                    vars.sleepTime += 10;
+                break;
+            case '[':
+                if (vars.isDebugMode && vars.sleepTime > 0)
+                    vars.sleepTime -= 10;
+                break;
         }
     }
 }
@@ -83,8 +82,10 @@ void GameLogic::logic(GameVariables &vars) {
     int prevX = vars.tailX[0];
     int prevY = vars.tailY[0];
     int prev2X, prev2Y; // Buffer
+
     vars.tailX[0] = vars.headX; // Move the first part on the previous head's place
     vars.tailY[0] = vars.headY; 
+
     // Start with 1,ּ as 0 tail part is already moved
     for (int i = 1; i < vars.tailLength; i++) {
         prev2X = vars.tailX[i];
@@ -94,6 +95,7 @@ void GameLogic::logic(GameVariables &vars) {
         prevX = prev2X;
         prevY = prev2Y;
     }
+
     // Moving head
     switch (vars.dir) {
         case vars.LEFT:
@@ -109,7 +111,8 @@ void GameLogic::logic(GameVariables &vars) {
             vars.headY++;
             break;
     }
-    // Check for collision with walls
+
+    // Check for collision with the walls
     switch (vars.gamemode) {
         case vars.CLASSIC:
         case vars.CLASSIC_SPEEDUP:
@@ -128,22 +131,28 @@ void GameLogic::logic(GameVariables &vars) {
                 vars.headY = vars.height - 1;
             break;
     }
+
     // Check for collision with tail
     if (vars.gamemode != vars.NOWALLS_INVINCIBLE) {
         for (int i = 0; i < vars.tailLength; i++)
             if (vars.tailX[i] == vars.headX && vars.tailY[i] == vars.headY)
                 vars.isGameOver = true;
     }
+
     // Eating a fruit
     if (vars.headX == vars.fruitX && vars.headY == vars.fruitY) {
+
         vars.score++;
+
         if (vars.tailLength != vars.maxScore) {
             vars.tailLength++;
         } else {
             vars.isGameOver = true;
             vars.isWin = true;
         }
+
         place_apple(vars);
+
         // For speed-up gamemode - speeds up the game
         if (vars.gamemode == vars.CLASSIC_SPEEDUP && (vars.sleepTime - vars.speedUpDecrement) >= vars.minSpeedUpTime)
             vars.sleepTime -= vars.speedUpDecrement;

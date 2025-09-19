@@ -13,9 +13,12 @@
 using namespace std;
 
 void GameRender::draw(GameVariables &vars) {
-    cout <<"\x1b[H"; // faster way to clear
+    // Frame buffer
+    ostringstream buffer;
+
     // Top wall
-    cout << vars.wallLine;
+    buffer << vars.wallLine;
+
     // Side walls and map
     bool isLineNotEmpty = false;
     for (int i = 1; i < vars.height-1; i++) {
@@ -32,43 +35,46 @@ void GameRender::draw(GameVariables &vars) {
         if (isLineNotEmpty) {
             for (int j = 0; j < vars.width; j++) {
                 if (j == 0 || j == vars.width-1)
-                    cout << '#';
+                    buffer << '#';
                 else if (i == vars.headY && j == vars.headX)
-                    cout << "\x1b[32mO\x1b[0m";
+                    buffer << "\x1b[32mO\x1b[0m";
                 else if (i == vars.fruitY && j == vars.fruitX)
-                    cout << "\x1b[31ma\x1b[0m";
+                    buffer << "\x1b[31ma\x1b[0m";
                 else {
                     bool print = false;
                     for (int k = 0; k < vars.tailLength; k++) {
                         if (vars.tailX[k] == j && vars.tailY[k] == i) {
-                            cout << "\x1b[32mo\x1b[0m";
+                            buffer << "\x1b[32mo\x1b[0m";
                             print = true;
                             break;
                         }
                     }
                     if (!print)
-                        cout << ' ';
+                        buffer << ' ';
                 }
             }
-            cout << '\n';
+            buffer << '\n';
         } else {
-            cout << vars.emptyLine;
+            buffer << vars.emptyLine;
         }
     }
+
     // Bottom wall
-    cout << vars.wallLine;
-    cout << "Score: " << vars.score << '\n';
+    buffer << vars.wallLine;
+    buffer << "Score: " << vars.score << '\n';
     if (vars.gamemode == vars.CLASSIC_SPEEDUP) {
-        cout << "Speed: " << 1000./vars.sleepTime;
+        buffer << "Speed: " << 1000./vars.sleepTime;
         if (vars.sleepTime <= vars.minSpeedUpTime)
-            cout << " MAX";
-        cout << '\n';
+            buffer << " MAX";
+        buffer << '\n';
     }
     if (vars.isDebugMode)
-        cout << "DEBUG: \n" 
+        buffer << "DEBUG: \n" 
             << "fruit: (" << vars.fruitX << ',' << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
             << "sleepTime: " << vars.sleepTime << " ms fps: " << 1000./vars.sleepTime << "     \n" \
             << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
+
+    cout << "\x1b[H" << buffer.str(); // Clear frame and print new one
 }
 
 void GameRender::results(GameVariables &vars) {

@@ -13,7 +13,7 @@
 /**
  * @brief Main function, creates instance of the Game and starts .tick()
  * 
- * @return int 
+ * @return int
  */
 int main() {
     Game snakeGame;

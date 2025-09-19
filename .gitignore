@@ -51,3 +51,6 @@ docs/Doxyfile
 *.exe
 *.out
 *.app
+
+# PowerShell Scripts
+*.ps1
