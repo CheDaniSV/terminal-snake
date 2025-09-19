@@ -134,6 +134,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5095007028732e3650efe781c39842dc" id="r_a5095007028732e3650efe781c39842dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5095007028732e3650efe781c39842dc">logic</a> (<a class="el" href="class_game_variables.html">GameVariables</a> &amp;vars)</td></tr>
 <tr class="memdesc:a5095007028732e3650efe781c39842dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves snake, handles collisions, eating a fruit and etc.  <br /></td></tr>
 <tr class="separator:a5095007028732e3650efe781c39842dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186d1ca0cb82d6fae47f4a344cd508c0" id="r_a186d1ca0cb82d6fae47f4a344cd508c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a186d1ca0cb82d6fae47f4a344cd508c0">prebakeLines</a> (<a class="el" href="class_game_variables.html">GameVariables</a> &amp;vars)</td></tr>
+<tr class="memdesc:a186d1ca0cb82d6fae47f4a344cd508c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prebake empty lines &amp; wall lines.  <br /></td></tr>
+<tr class="separator:a186d1ca0cb82d6fae47f4a344cd508c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b86bcfd29dcea1bf804748106f9f585" id="r_a7b86bcfd29dcea1bf804748106f9f585"><td class="memItemLeft" align="right" valign="top"><a id="a7b86bcfd29dcea1bf804748106f9f585" name="a7b86bcfd29dcea1bf804748106f9f585"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSizeDependentValues</b> (<a class="el" href="class_game_variables.html">GameVariables</a> &amp;vars, int width, int height, bool isFirstInit)</td></tr>
+<tr class="memdesc:a7b86bcfd29dcea1bf804748106f9f585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of <a class="el" href="class_game.html" title="Declaration of Game class.">Game</a>, initializes start dialog and other preparations. <br /></td></tr>
+<tr class="separator:a7b86bcfd29dcea1bf804748106f9f585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declaration of <a class="el" href="class_game_logic.html" title="Declaration of GameLogic class.">GameLogic</a> class. </p>
@@ -204,6 +211,31 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Places new apple randomly on the field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vars</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a186d1ca0cb82d6fae47f4a344cd508c0" name="a186d1ca0cb82d6fae47f4a344cd508c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186d1ca0cb82d6fae47f4a344cd508c0">&#9670;&#160;</a></span>prebakeLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameLogic::prebakeLines </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_variables.html">GameVariables</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>vars</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prebake empty lines &amp; wall lines. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vars</td><td></td></tr>

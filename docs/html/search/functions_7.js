@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tick_0',['tick',['../class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc',1,'Game']]]
+  ['setsizedependentvalues_0',['SetSizeDependentValues',['../class_game_logic.html#a7b86bcfd29dcea1bf804748106f9f585',1,'GameLogic']]]
 ];

@@ -40,6 +40,19 @@ class GameLogic {
          * @param vars 
          */
         void logic(GameVariables &vars);
+
+        /**
+        * @brief Prebake empty lines & wall lines
+        * 
+        * @param vars
+        */
+        void prebakeLines(GameVariables &vars);
+
+        /**
+        * @brief Constructor of Game, initializes start dialog and other preparations
+        * 
+        */
+        void SetSizeDependentValues(GameVariables &vars, int width, int height, bool isFirstInit);
 };
 
 #endif

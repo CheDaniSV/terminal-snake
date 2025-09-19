@@ -12,6 +12,79 @@
 
 using namespace std;
 
+// Yes, I know, it has almost no effect :)
+void GameLogic::prebakeLines(GameVariables &vars) {
+    vars.wallLine.clear();
+    vars.emptyLine.clear();
+
+    // Prebaking wall line
+    for (int i = 0; i < vars.width; i++) { 
+        vars.wallLine += '#';
+    }
+    vars.wallLine += '\n';
+
+    // Prebaking empty line
+    vars.emptyLine = '#';
+    for (int i = 2; i < vars.width; i++) { 
+        vars.emptyLine += ' ';
+    }
+    vars.emptyLine += "#\n";
+}
+
+void GameLogic::SetSizeDependentValues(GameVariables &vars, int width, int height, bool isFirstInit = false) {
+    if (width > 3 && height > 3) {
+        vars.playableWidth = width - 2;
+        vars.playableHeight = height - 2;
+        vars.width = width;
+        vars.height = height;
+        vars.maxScore = vars.playableWidth*vars.playableHeight-1;
+
+        if (!isFirstInit) {
+            int *tempTailX = new int[vars.width*vars.height];
+            int *tempTailY = new int[vars.width*vars.height];
+            int oldTailLength = vars.tailLength;
+            int maxTailLength = vars.width * vars.height;
+            if (vars.tailX != nullptr && vars.tailY != nullptr) {
+                int copyLength = (oldTailLength < maxTailLength) ? oldTailLength : maxTailLength;
+                for (int i = 0; i < copyLength; i++) {
+                    tempTailX[i] = vars.tailX[i];
+                    tempTailY[i] = vars.tailY[i];
+                }
+                delete[] vars.tailX;
+                delete[] vars.tailY;
+            }
+            vars.tailX = tempTailX;
+            vars.tailY = tempTailY;
+
+            // Clamp tailLength to new max possible value
+            if (vars.tailLength > maxTailLength) {
+                vars.tailLength = maxTailLength;
+            }
+        } else {
+            vars.tailX = new int[vars.width*vars.height];
+            vars.tailY = new int[vars.width*vars.height];
+
+            // Clamp tailLength to new max possible value
+            if (vars.tailLength > vars.width * vars.height) {
+                vars.tailLength = vars.width * vars.height;
+            }
+        }
+
+        if (vars.score > vars.maxScore)
+            vars.score = vars.maxScore - 1;
+
+        if (vars.fruitX <= 0 || vars.fruitX >= width - 1 || vars.fruitY <= 0 || vars.fruitY >= height - 1)
+            place_apple(vars);
+
+        vars.gen = mt19937(vars.rd()); // Doesn't need to be here, but anyway
+        vars.distribWidth = uniform_int_distribution<>(1, vars.playableWidth);
+        vars.distribHeight = uniform_int_distribution<>(1, vars.playableHeight);
+
+        prebakeLines(vars);
+        cout << "\x1b[2J\x1b[H";
+    }
+}
+
 void GameLogic::place_apple(GameVariables &vars) {
     vars.fruitX = vars.distribWidth(vars.gen);
     vars.fruitY = vars.distribHeight(vars.gen);
@@ -72,6 +145,12 @@ void GameLogic::input(GameVariables &vars) {
             case '[':
                 if (vars.isDebugMode && vars.sleepTime > 0)
                     vars.sleepTime -= 10;
+                break;
+            case '.':
+                SetSizeDependentValues(vars, vars.width + 1, vars.height + 1);
+                break;
+            case ',':
+                SetSizeDependentValues(vars, vars.width - 1, vars.height - 1);
                 break;
         }
     }

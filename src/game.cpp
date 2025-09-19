@@ -44,29 +44,17 @@ Game::Game() {
             break;
     }
 
+    SetSizeDependentValues(vars, 35, 19, true);
+
     // Default values
-    vars.playableWidth = 33;
-    vars.playableHeight = 17;
-    vars.width = vars.playableWidth + 2;
-    vars.height = vars.playableHeight + 2;
-    vars.maxScore = vars.playableWidth*vars.playableHeight-1;
-
-    vars.tailX = new int[vars.width*vars.height];
-    vars.tailY = new int[vars.width*vars.height];
-    vars.gen = mt19937(vars.rd());
-    vars.distribWidth = uniform_int_distribution<>(1, vars.playableWidth);
-    vars.distribHeight = uniform_int_distribution<>(1, vars.playableHeight);
-
     vars.tailLength = 0;
     vars.score = 0;
     vars.sleepTime = 60;
     vars.speedUpDecrement = 2;
-    vars.isGameOver = true;
+    vars.isGameOver = false;
     vars.isWin = false;
     vars.isDebugMode = false;
-    vars.dir = vars.STOP;
-
-    prebakeLines(vars);
+    vars.dir = vars.STOP;;
 
     // Initial head position
     vars.headX = ceil(vars.playableWidth/2)+1;
@@ -82,7 +70,7 @@ void Game::tick() {
     if (vars.isGameOver)
         exit(0);
 
-        while (!vars.isGameOver) {
+    while (!vars.isGameOver) {
         input(vars);
         logic(vars);
         draw(vars);

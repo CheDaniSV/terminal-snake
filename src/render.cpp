@@ -12,22 +12,6 @@
 
 using namespace std;
 
-// Yes, I know, it has almost no effect :)
-void GameRender::prebakeLines(GameVariables &vars) {
-    // Prebaking wall line
-    for (int i = 0; i < vars.width; i++) { 
-        vars.wallLine += '#';
-    }
-    vars.wallLine += '\n';
-
-    // Prebaking empty line
-    vars.emptyLine = '#';
-    for (int i = 2; i < vars.width; i++) { 
-        vars.emptyLine += ' ';
-    }
-    vars.emptyLine += "#\n";
-}
-
 void GameRender::draw(GameVariables &vars) {
     // Frame buffer
     ostringstream buffer;

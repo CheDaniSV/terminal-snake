@@ -21,13 +21,6 @@
 class GameRender {
     public:
         /**
-        * @brief Prebake empty lines & wall lines
-        * 
-        * @param vars
-        */
-        void prebakeLines(GameVariables &vars);
-
-        /**
         * @brief Renders game field
         * 
         * @param vars
