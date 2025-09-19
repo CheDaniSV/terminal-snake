@@ -25,7 +25,7 @@ class GameRender {
         * 
         * @param vars 
         */
-        void draw(GameVariables &var);
+        void draw(GameVariables &vars);
 
         /**
          * @brief Outputs results of the game when game has ended

@@ -119,20 +119,24 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </li>
 </ul>
 <h2><a class="anchor" id="autotoc_md1"></a>
-Building yourself</h2>
-<p>Use make tool to build the game yourself.</p><ul>
-<li>To install make run one of the following commands:<ul>
-<li><code>pacman -S make</code></li>
-<li><code>sudo apt install make</code></li>
+Build yourself</h2>
+<ul>
+<li>Run one of the following commands to install dependencies:<ul>
+<li><code>pacman -S make base-devel</code></li>
+<li><code>sudo apt install make build-essential</code></li>
+<li>or use other package manager</li>
 </ul>
 </li>
-<li>To build:<ul>
+<li>Build:<ul>
 <li>run <code>make</code> to build executable for your platform</li>
-<li>run <code>make clean</code> to delete build files</li>
 </ul>
 </li>
 </ul>
-<p>Running in Docker: <code>docker run --rm -it chedanisv/terminal-snake</code> </p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Run in Docker</h2>
+<ul>
+<li><code>docker run --rm -it chedanisv/terminal-snake</code> </li>
+</ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

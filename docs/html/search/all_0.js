@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['building_20yourself_0',['Building yourself',['../index.html#autotoc_md1',1,'']]]
+  ['build_20yourself_0',['Build yourself',['../index.html#autotoc_md1',1,'']]]
 ];

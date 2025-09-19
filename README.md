@@ -14,13 +14,13 @@
 	- NOWALLS - no collisions with the walls
 	- NOWALLS_INVINCIBLE - no collisions at all. You can't die
 
-### Building yourself
-Use make tool to build the game yourself.
-- To install make run one of the following commands:
-	- `pacman -S make`
-	- `sudo apt install make`
-- To build: 
+### Build yourself
+- Run one of the following commands to install dependencies:
+	- `pacman -S make base-devel`
+	- `sudo apt install make build-essential`
+	- or use other package manager
+- Build:
 	- run `make` to build executable for your platform
-	- run `make clean` to delete build files
 
-Running in Docker: `docker run --rm -it chedanisv/terminal-snake`
+### Run in Docker 
+- `docker run --rm -it chedanisv/terminal-snake`
