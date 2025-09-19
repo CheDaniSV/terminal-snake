@@ -23,9 +23,9 @@ Game::Game() {
          << "~. exit \n" \
          << "Select a game mode: ";
     cin >> user_input;
-    
+
     clearConsole();
-    
+
     switch (user_input) {
         case 1:
             vars.gamemode = vars.CLASSIC;
@@ -44,18 +44,29 @@ Game::Game() {
             break;
     }
 
-    // Prebaking line of wall. Yes, I know, it has almost no effect :)
-    for (int i = 0; i < vars.width; i++) { 
-        vars.wallLine += '#';
-    }
-    vars.wallLine += '\n';
+    // Default values
+    vars.playableWidth = 33;
+    vars.playableHeight = 17;
+    vars.width = vars.playableWidth + 2;
+    vars.height = vars.playableHeight + 2;
+    vars.maxScore = vars.playableWidth*vars.playableHeight-1;
 
-    // Prebaking empty line
-    vars.emptyLine = '#';
-    for (int i = 2; i < vars.width; i++) { 
-        vars.emptyLine += ' ';
-    }
-    vars.emptyLine += "#\n";
+    vars.tailX = new int[vars.width*vars.height];
+    vars.tailY = new int[vars.width*vars.height];
+    vars.gen = mt19937(vars.rd());
+    vars.distribWidth = uniform_int_distribution<>(1, vars.playableWidth);
+    vars.distribHeight = uniform_int_distribution<>(1, vars.playableHeight);
+
+    vars.tailLength = 0;
+    vars.score = 0;
+    vars.sleepTime = 60;
+    vars.speedUpDecrement = 2;
+    vars.isGameOver = true;
+    vars.isWin = false;
+    vars.isDebugMode = false;
+    vars.dir = vars.STOP;
+
+    prebakeLines(vars);
 
     // Initial head position
     vars.headX = ceil(vars.playableWidth/2)+1;

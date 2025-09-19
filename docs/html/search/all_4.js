@@ -8,6 +8,6 @@ var searchData=
   ['gamemode_5',['gamemode',['../class_game_variables.html#aaeb509a344bdaab61a7b6b22a87d5454',1,'GameVariables']]],
   ['gamemodes_6',['gameModes',['../class_game_variables.html#a4674ea843f53ad8917b198a3297ea31c',1,'GameVariables']]],
   ['gamerender_7',['GameRender',['../class_game_render.html',1,'']]],
-  ['gamevariables_8',['GameVariables',['../class_game_variables.html',1,'GameVariables'],['../class_game_variables.html#a4f83c34aaf072441476ae6652cd8aa77',1,'GameVariables::GameVariables()']]],
+  ['gamevariables_8',['GameVariables',['../class_game_variables.html',1,'']]],
   ['gen_9',['gen',['../class_game_variables.html#a82682984fd33343575e73ad9bbda3cff',1,'GameVariables']]]
 ];

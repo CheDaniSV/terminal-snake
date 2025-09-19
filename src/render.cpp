@@ -12,6 +12,22 @@
 
 using namespace std;
 
+// Yes, I know, it has almost no effect :)
+void GameRender::prebakeLines(GameVariables &vars) {
+    // Prebaking wall line
+    for (int i = 0; i < vars.width; i++) { 
+        vars.wallLine += '#';
+    }
+    vars.wallLine += '\n';
+
+    // Prebaking empty line
+    vars.emptyLine = '#';
+    for (int i = 2; i < vars.width; i++) { 
+        vars.emptyLine += ' ';
+    }
+    vars.emptyLine += "#\n";
+}
+
 void GameRender::draw(GameVariables &vars) {
     // Frame buffer
     ostringstream buffer;
@@ -70,7 +86,7 @@ void GameRender::draw(GameVariables &vars) {
     }
     if (vars.isDebugMode)
         buffer << "DEBUG: \n" 
-            << "fruit: (" << vars.fruitX << ',' << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
+            << "fruit: (" << vars.fruitX << ", " << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
             << "sleepTime: " << vars.sleepTime << " ms fps: " << 1000./vars.sleepTime << "     \n" \
             << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
 

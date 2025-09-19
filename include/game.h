@@ -22,7 +22,7 @@
  */
 class Game: public GameRender, public GameLogic {
     public:
-        GameVariables vars; /*!< instance of game variables (object holding all variables global) */
+        GameVariables vars; /*!< instance of game variables (object holding all variables) */
 
         /**
         * @brief Constructor of Game, initializes start dialog and other preparations
