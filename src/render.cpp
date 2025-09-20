@@ -13,6 +13,8 @@
 using namespace std;
 
 void GameRender::draw(GameVariables &vars) {
+    // Frame time meter
+    auto renderStart = chrono::high_resolution_clock::now();
     // Frame buffer
     ostringstream buffer;
 
@@ -68,10 +70,14 @@ void GameRender::draw(GameVariables &vars) {
             buffer << " MAX";
         buffer << '\n';
     }
+
+    auto renderEnd = chrono::high_resolution_clock::now(); // Not the end exactly, but it's the easiest way
+    chrono::duration<double, milli> frameTime = renderEnd - renderStart;
+
     if (vars.isDebugMode)
         buffer << "DEBUG: \n" 
-            << "fruit: (" << vars.fruitX << ", " << vars.fruitY << ") head: (" << vars.headX << ',' << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
-            << "sleepTime: " << vars.sleepTime << " ms fps: " << 1000./vars.sleepTime << "     \n" \
+            << "fruit: (" << vars.fruitX << ", " << vars.fruitY << ") head: (" << vars.headX << ", " << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
+            << "sleepTime: " << vars.sleepTime << " FrameTime: " << frameTime.count() << " ms MaxFPS: " << 1000/frameTime.count() << '\n' \
             << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
 
     cout << "\x1b[H" << buffer.str(); // Clear frame and print new one

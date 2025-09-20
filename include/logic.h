@@ -49,7 +49,7 @@ class GameLogic {
         void prebakeLines(GameVariables &vars);
 
         /**
-        * @brief Constructor of Game, initializes start dialog and other preparations
+        * @brief Set/Update attributes which are depend on size of the field. Allow to change field size at run-time.
         * 
         */
         void SetSizeDependentValues(GameVariables &vars, int width, int height, bool isFirstInit);

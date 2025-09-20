@@ -44,6 +44,7 @@ Game::Game() {
             break;
     }
 
+    // Set Field size & update dependent values
     SetSizeDependentValues(vars, 35, 19, true);
 
     // Default values

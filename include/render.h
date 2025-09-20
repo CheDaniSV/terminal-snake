@@ -13,6 +13,7 @@
 
 #include "variables.h"
 #include <sstream>
+#include <chrono>
 
 /**
  * @brief Declaration of GameRender class

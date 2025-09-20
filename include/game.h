@@ -11,10 +11,9 @@
 #ifndef GAME
 #define GAME
 
-#include <iostream>
+#include "variables.h"
 #include "render.h"
 #include "logic.h"
-#include "variables.h"
 
 /**
  * @brief Declaration of Game class
