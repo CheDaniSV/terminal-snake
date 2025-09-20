@@ -14,7 +14,6 @@
 #include "variables.h"
 #include "systemfunctions.h"
 #include <sstream>
-#include <chrono>
 
 /**
  * @brief Declaration of GameRender class

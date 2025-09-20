@@ -49,7 +49,7 @@ class GameLogic {
         void prebakeLines(GameVariables &vars);
 
         /**
-        * @brief Set/Update attributes which are depend on size of the field. Allow to change field size at run-time.
+        * @brief Set/Update attributes dependend on size of the field. Allows to change field size at run-time.
         * 
         */
         void SetSizeDependentValues(GameVariables &vars, int width, int height, bool isFirstInit);

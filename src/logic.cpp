@@ -162,7 +162,8 @@ void GameLogic::logic(GameVariables &vars) {
     int prevY = vars.tailY[0];
     int prev2X, prev2Y; // Buffer
 
-    vars.tailX[0] = vars.headX; // Move the first part on the previous head's place
+    // Move the first part on the previous head's place
+    vars.tailX[0] = vars.headX;
     vars.tailY[0] = vars.headY; 
 
     // Start with 1,ּ as 0 tail part is already moved
