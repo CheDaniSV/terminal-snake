@@ -23,4 +23,5 @@
 	- run `make` to build executable for your platform
 
 ### Run in Docker 
+- `docker pull chedanisv/terminal-snake:latest`
 - `docker run --rm -it chedanisv/terminal-snake`
