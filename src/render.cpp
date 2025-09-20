@@ -71,14 +71,21 @@ void GameRender::draw(GameVariables &vars) {
         buffer << '\n';
     }
 
-    auto renderEnd = chrono::high_resolution_clock::now(); // Not the end exactly, but it's the easiest way
-    chrono::duration<double, milli> frameTime = renderEnd - renderStart;
+    if (vars.isDebugMode) {
+        auto renderEnd = chrono::high_resolution_clock::now(); // Not the end exactly, but it's the easiest way
 
-    if (vars.isDebugMode)
-        buffer << "DEBUG: \n" 
-            << "fruit: (" << vars.fruitX << ", " << vars.fruitY << ") head: (" << vars.headX << ", " << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
-            << "sleepTime: " << vars.sleepTime << " FrameTime: " << frameTime.count() << " ms MaxFPS: " << 1000/frameTime.count() << '\n' \
-            << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
+        // if (chrono::duration<double, milli>{renderEnd - renderStart}.count() < 10)
+        //     sleep_ms(5);
+
+        // renderEnd = chrono::high_resolution_clock::now();
+        chrono::duration<double, milli> frameTime = renderEnd - renderStart;
+
+            buffer << "DEBUG: \n" 
+                << "fruit: (" << vars.fruitX << ", " << vars.fruitY << ") head: (" << vars.headX << ", " << vars.headY << ") tailLength: " << vars.tailLength << "     \n" \
+                << "sleepTime: " << vars.sleepTime << " FrameTime: " << frameTime.count() << " ms FPS: " << (int) 1000/frameTime.count() << "     \n" \
+                << "gridSize: (" << vars.width << 'x' << vars.height << ") gm: " << vars.gamemode << "     \n";
+    }
+    
 
     cout << "\x1b[H" << buffer.str(); // Clear frame and print new one
 }

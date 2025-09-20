@@ -12,6 +12,7 @@
 #define GAME_RENDER
 
 #include "variables.h"
+#include "systemfunctions.h"
 #include <sstream>
 #include <chrono>
 
